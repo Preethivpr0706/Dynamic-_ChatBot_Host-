@@ -3624,3 +3624,91 @@
 2025-02-01 12:35:50 [DEBUG]: Executing query for POC_ID: 1
 2025-02-01 12:35:51 [INFO]: Message sent successfully
 2025-02-01 12:35:51 [INFO]: Appointment confirmed successfully
+2025-02-01 12:49:17 [INFO]:  connected to MySQL database.
+2025-02-01 12:49:17 [INFO]: Server is running on http://localhost:6000
+2025-02-01 12:49:22 [INFO]: Message received from: 919094995418, Content: hi
+2025-02-01 12:49:22 [DEBUG]: Message type: text
+2025-02-01 12:49:22 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:49:22 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:49:22 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:49:22 [INFO]: Query results:
+2025-02-01 12:49:22 [INFO]: Handling POC view for: 919094995418
+2025-02-01 12:49:22 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:49:22 [DEBUG]: Client ID: 1
+2025-02-01 12:49:22 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:49:22 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:49:22 [INFO]: Query results:
+2025-02-01 12:49:22 [DEBUG]: POC Details: {"POC_ID":2,"POC_NAME":"Dr. Preet Jones"}
+2025-02-01 12:49:22 [ERROR]: Error uploading image:
+2025-02-01 12:49:22 [ERROR]: Error sending interactive message:
+2025-02-01 12:49:22 [INFO]: Welcome message sent successfully
+2025-02-01 12:49:30 [INFO]: Message received from: 919094995418, Content: hi
+2025-02-01 12:49:30 [DEBUG]: Message type: text
+2025-02-01 12:49:30 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:49:30 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:49:30 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:49:30 [INFO]: Query results:
+2025-02-01 12:49:30 [INFO]: Handling POC view for: 919094995418
+2025-02-01 12:49:30 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:49:30 [DEBUG]: Client ID: 1
+2025-02-01 12:49:30 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:49:30 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:49:30 [INFO]: Query results:
+2025-02-01 12:49:30 [DEBUG]: POC Details: {"POC_ID":2,"POC_NAME":"Dr. Preet Jones"}
+2025-02-01 12:49:30 [ERROR]: Error uploading image:
+2025-02-01 12:49:30 [ERROR]: Error sending interactive message:
+2025-02-01 12:49:30 [INFO]: Welcome message sent successfully
+2025-02-01 12:50:05 [INFO]:  connected to MySQL database.
+2025-02-01 12:50:05 [INFO]: Server is running on http://localhost:6000
+2025-02-01 12:50:23 [INFO]: Message received from: 919094995418, Content: hi
+2025-02-01 12:50:23 [DEBUG]: Message type: text
+2025-02-01 12:50:23 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:50:23 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:50:23 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:50:23 [INFO]: Query results:
+2025-02-01 12:50:23 [INFO]: Handling POC view for: 919094995418
+2025-02-01 12:50:23 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:50:23 [DEBUG]: Client ID: 1
+2025-02-01 12:50:23 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:50:23 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:50:23 [INFO]: Query results:
+2025-02-01 12:50:23 [DEBUG]: POC Details: {"POC_ID":2,"POC_NAME":"Dr. Preet Jones"}
+2025-02-01 12:50:23 [ERROR]: Error uploading image:
+2025-02-01 12:50:23 [ERROR]: Error sending interactive message:
+2025-02-01 12:50:23 [INFO]: Welcome message sent successfully
+2025-02-01 12:52:33 [INFO]:  connected to MySQL database.
+2025-02-01 12:52:33 [INFO]: Server is running on http://localhost:6000
+2025-02-01 12:52:41 [INFO]: Message received from: 919094995418, Content: hi
+2025-02-01 12:52:41 [DEBUG]: Message type: text
+2025-02-01 12:52:41 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:52:41 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:52:41 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:52:41 [INFO]: Query results:
+2025-02-01 12:52:41 [INFO]: Handling POC view for: 919094995418
+2025-02-01 12:52:41 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:52:41 [DEBUG]: Client ID: 1
+2025-02-01 12:52:41 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:52:41 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:52:41 [INFO]: Query results:
+2025-02-01 12:52:41 [DEBUG]: POC Details: {"POC_ID":2,"POC_NAME":"Dr. Preet Jones"}
+2025-02-01 12:52:41 [ERROR]: Error uploading image:
+2025-02-01 12:52:42 [ERROR]: Error sending interactive message:
+2025-02-01 12:52:42 [INFO]: Welcome message sent successfully
+2025-02-01 12:55:00 [INFO]:  connected to MySQL database.
+2025-02-01 12:55:00 [INFO]: Server is running on http://localhost:6000
+2025-02-01 12:55:07 [INFO]: Message received from: 919094995418, Content: hi
+2025-02-01 12:55:07 [DEBUG]: Message type: text
+2025-02-01 12:55:07 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:55:07 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:55:07 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:55:07 [INFO]: Query results:
+2025-02-01 12:55:07 [INFO]: Handling POC view for: 919094995418
+2025-02-01 12:55:07 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
+2025-02-01 12:55:07 [DEBUG]: Client ID: 1
+2025-02-01 12:55:07 [INFO]: getFromPOC: from:919094995418
+2025-02-01 12:55:07 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-02-01 12:55:07 [INFO]: Query results:
+2025-02-01 12:55:07 [DEBUG]: POC Details: {"POC_ID":2,"POC_NAME":"Dr. Preet Jones"}
+2025-02-01 12:55:09 [DEBUG]: Image uploaded successfully:
+2025-02-01 12:55:10 [INFO]: Interactive message sent successfully
+2025-02-01 12:55:10 [INFO]: Welcome message sent successfully

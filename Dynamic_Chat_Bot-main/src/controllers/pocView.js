@@ -55,7 +55,7 @@ exports.handlePocView = async(req, res, webhookData) => {
                         from,
                         welcomeMessage,
                         options,
-                        `./../../images/client${clientId}/poc1.jpg`);
+                        `../images/client${clientId}/poc1.jpg`);
                     logger.info("Welcome message sent successfully");
                 }
             }
