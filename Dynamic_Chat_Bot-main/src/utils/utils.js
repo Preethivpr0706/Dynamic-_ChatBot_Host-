@@ -1,8 +1,6 @@
 // utils.js  
 const axios = require('axios');
 
-const path = require('path');
-
 const logger = require('../config/Logger'); // Import the logger  
 
 const path = require('path');
@@ -364,7 +362,7 @@ async function logMessageDetails(logger, from, messageBody, messageType) {
 
 
 async function getImagePath(clientId, imageType) {
-    const directory = `./../../images/client${clientId}/`;
+    const directory = path.resolve(__dirname, '../../images/client' + clientId);
 
     if (fs.existsSync(directory)) {
         const files = fs.readdirSync(directory);
@@ -376,7 +374,6 @@ async function getImagePath(clientId, imageType) {
             return path.join(directory, file); // Return the full path with the extension
         }
     }
-
     return null; // Return null if the file is not found
 }
 

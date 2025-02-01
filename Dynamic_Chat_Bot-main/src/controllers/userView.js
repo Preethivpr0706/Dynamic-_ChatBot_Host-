@@ -598,6 +598,7 @@ async function sendWelcomeMessage(from, clientId, userData) {
     const headerMessage = mainMenuItems[0].HEADER_MESSAGE;
     const menuNames = mainMenuItems.map((item) => ({ id: item.CLIENT_ID + "~" + item.MENU_ID + "~" + item.MENU_ID + "|" + item.CLIENT_ID + "~" + item.MENU_ID + "~" + item.MENU_ID, title: item.MENU_NAME, }));
     const imagePath = await getImagePath(clientId, 'welcome');
+    console.log(`imagePath: ${imagePath}`);
     await sendInteractiveMessageWithImage(from, headerMessage, menuNames, imagePath);
     logger.info(`Main menu sent to ${from}`);
     logger.info(`user Id: ${userData.User_ID}`);
@@ -621,7 +622,7 @@ async function updateTransaction(paymentId, data) {
 }
 
 
-const authInstance = require('./razorpay');
+const authInstance = require('../services/razorpay');
 async function generatePaymentLink(Appointment_ID, userData, from) {
     // Fetch the POC details
     const pocDetails = await getPocFeeDetails(Appointment_ID);

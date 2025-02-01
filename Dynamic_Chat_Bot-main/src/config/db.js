@@ -5,7 +5,7 @@ const path = require('path');
 const dotenv = require('dotenv');
 
 // Explicitly set the path to the .env file in the project root
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 let connection;
 

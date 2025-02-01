@@ -1,5 +1,6 @@
 const winston = require('winston');
 const moment = require('moment-timezone'); // Import moment-timezone
+const path = require('path');
 
 // Configure Winston logger
 const logger = winston.createLogger({
@@ -13,7 +14,9 @@ const logger = winston.createLogger({
         }) // Custom format
     ),
     transports: [
-        new winston.transports.File({ filename: 'app.log' }) // Log to file
+        new winston.transports.File({
+            filename: path.resolve(__dirname, '../../logs/app.log') // Correct log file path
+        }) // Log to file
     ],
 });
 
