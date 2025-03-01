@@ -7,8 +7,6 @@ const dotenv = require('dotenv');
 // Explicitly set the path to the .env file in the project root
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-
-const db = require('../config/db');
 const { sendWhatsAppMessage } = require('../utils/utils');
 
 
@@ -62,25 +60,34 @@ router.post('/razorpay/webhook', async(req, res) => {
     res.send('Webhook received!');
 });
 
+// Import the connection pool from db.js
+const pool = require('../config/db');
+
 // Update transaction status using the transaction ID  
 async function updatePaymentId(transactionId, data) {
     try {
-        const connection = db.getConnection();
         const query = `UPDATE transactions SET ? WHERE transaction_id = ?`;
         const values = [data, transactionId];
         console.log(values);
-        await connection.promise().query(query, values);
+
+        // Using the pool directly with promise-based query
+        const [results] = await pool.promise().query(query, values);
+        console.log('Transaction updated successfully:', results);
     } catch (error) {
         console.error(`Error updating transaction: ${error}`);
     }
 }
+
+// Update transaction status using the payment ID  
 async function updateTransaction(paymentId, data) {
     try {
-        const connection = db.getConnection();
         const query = `UPDATE transactions SET ? WHERE payment_id = ?`;
         const values = [data, paymentId];
         console.log(values);
-        await connection.promise().query(query, values);
+
+        // Using the pool directly with promise-based query
+        const [results] = await pool.promise().query(query, values);
+        console.log('Transaction updated successfully:', results);
     } catch (error) {
         console.error(`Error updating transaction: ${error}`);
     }

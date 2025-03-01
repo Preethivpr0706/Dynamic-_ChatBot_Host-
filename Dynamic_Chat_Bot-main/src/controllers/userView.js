@@ -37,10 +37,7 @@ const {
 
 const { isValidEmail, isValidPhoneNumber } = require('../utils/validate');
 const logger = require('../config/Logger');
-const db = require('../config/db');
-
-db.connectDB();
-
+const pool = require("../config/db"); // Import connection pool
 const path = require('path');
 const dotenv = require('dotenv');
 
@@ -614,13 +611,6 @@ async function sendBackButton(from, previousId, Appointment_ID, mainMenuItems) {
 }
 
 
-async function updateTransaction(paymentId, data) {
-    const connection = db.getConnection();
-    const query = `UPDATE transactions SET ? WHERE transaction_id = ?`;
-    const values = [data, paymentId];
-    await connection.promise().query(query, values);
-}
-
 
 const authInstance = require('../services/razorpay');
 async function generatePaymentLink(Appointment_ID, userData, from) {
@@ -661,29 +651,46 @@ async function generatePaymentLink(Appointment_ID, userData, from) {
 
     return { paymentLink, transactionId: paymentId, feesAmount };
 }
+
+
+// Update transaction status using the payment ID
+async function updateTransaction(paymentId, data) {
+    const query = `UPDATE transactions SET ? WHERE transaction_id = ?`;
+    const values = [data, paymentId];
+
+    // Use the pool directly with promise-based query
+    await pool.promise().query(query, values);
+}
+
+// Get POC Fee details by Appointment ID
 async function getPocFeeDetails(Appointment_ID) {
-    const connection = db.getConnection();
     const query = `SELECT * FROM poc WHERE POC_ID = (SELECT POC_ID FROM appointments WHERE Appointment_ID = ?)`;
     const values = [Appointment_ID];
-    const result = await connection.promise().query(query, values);
-    return result[0][0];
+
+    // Use the pool directly with promise-based query
+    const [result] = await pool.promise().query(query, values);
+    return result[0]; // Return the first row from the result
 }
 
-
+// Insert transaction with Appointment ID and transaction ID
 async function insertTransaction(Appointment_ID, transactionId) {
-    const connection = db.getConnection();
     const query = `INSERT INTO transactions (appointment_id, transaction_id, status) VALUES (?, ?, ?)`;
     const values = [Appointment_ID, transactionId, 'pending'];
-    await connection.promise().query(query, values);
+
+    // Use the pool directly with promise-based query
+    await pool.promise().query(query, values);
 }
+
+// Get payment status by transaction ID
 async function getPaymentStatusByTransactionId(transactionId) {
-    const connection = db.getConnection();
     const query = `SELECT status FROM transactions WHERE transaction_id = ?`;
     const values = [transactionId];
-    const result = await connection.promise().query(query, values);
-    if (result[0].length > 0) {
-        return result[0][0].status;
+
+    // Use the pool directly with promise-based query
+    const [result] = await pool.promise().query(query, values);
+    if (result.length > 0) {
+        return result[0].status; // Return status if found
     } else {
-        return null;
+        return null; // Return null if no result found
     }
 }

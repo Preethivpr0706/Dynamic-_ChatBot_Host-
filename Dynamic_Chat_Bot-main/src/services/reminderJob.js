@@ -11,9 +11,7 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 
 const { fetchUpcomingAppointments, getTemplateMessage } = require('../controllers/dbController');
-const { connectDB } = require('../config/db');
-
-connectDB();
+const pool = require("../config/db"); // Import connection pool
 
 
 // WhatsApp API Config
