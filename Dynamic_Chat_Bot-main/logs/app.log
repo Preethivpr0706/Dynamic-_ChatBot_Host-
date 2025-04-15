@@ -1,769 +1,570 @@
-2025-02-26 22:12:36 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:12:36 [INFO]: Connected to MySQL database.
-2025-02-26 22:13:15 [INFO]: Webhook verified successfully.
-2025-02-26 22:13:34 [INFO]: GET / endpoint hit - Server is running!
-2025-02-26 22:16:47 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:16:47 [INFO]: Connected to MySQL database.
-2025-02-26 22:21:42 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:21:42 [INFO]: Connected to MySQL database.
-2025-02-26 22:21:59 [INFO]: Webhook received: {"test":"message"}
-2025-02-26 22:21:59 [ERROR]: Invalid webhook data:
-2025-02-26 22:28:26 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:28:26 [INFO]: Connected to MySQL database.
-2025-02-26 22:28:31 [INFO]: Webhook received: {"object":"whatsapp_business_account","entry":[{"id":"469409169582359","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"15551834745","phone_number_id":"423177220884486"},"contacts":[{"profile":{"name":"Preethi"},"wa_id":"919094995418"}],"messages":[{"from":"919094995418","id":"wamid.HBgMOTE5MDk0OTk1NDE4FQIAEhgWM0VCMEZCNEZCQjM3RjdCQkE0REQ3NgA=","timestamp":"1740589110","text":{"body":"hi"},"type":"text"}]},"field":"messages"}]}]}
-2025-02-26 22:28:31 [INFO]: Message received from 919094995418: hi
-2025-02-26 22:28:31 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:28:31 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:28:31 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:28:31 [INFO]: Query results:
-2025-02-26 22:28:31 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:28:31 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:28:31 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:28:31 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:28:32 [INFO]: Message sent successfully
-2025-02-26 22:28:32 [INFO]: Welcome message sent to 919094995418
-2025-02-26 22:28:32 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 0
-2025-02-26 22:28:32 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:28:32 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":37,"MENU_NAME":"Book Appointment ","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
-2025-02-26 22:28:33 [INFO]: Webhook received: {"object":"whatsapp_business_account","entry":[{"id":"469409169582359","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"15551834745","phone_number_id":"423177220884486"},"statuses":[{"id":"wamid.HBgMOTE5MDk0OTk1NDE4FQIAERgSMUZEQkEwOTQ0QzZEM0RFNzYxAA==","status":"sent","timestamp":"1740589112","recipient_id":"919094995418","conversation":{"id":"c03cd21d96825132c60c264d0f35f94d","expiration_timestamp":"1740675540","origin":{"type":"service"}},"pricing":{"billable":true,"pricing_model":"CBP","category":"service"}}]},"field":"messages"}]}]}
-2025-02-26 22:28:34 [DEBUG]: Image uploaded successfully:
-2025-02-26 22:28:35 [INFO]: Webhook received: {"object":"whatsapp_business_account","entry":[{"id":"469409169582359","changes":[{"value":{"messaging_product":"whatsapp","metadata":{"display_phone_number":"15551834745","phone_number_id":"423177220884486"},"statuses":[{"id":"wamid.HBgMOTE5MDk0OTk1NDE4FQIAERgSMUZEQkEwOTQ0QzZEM0RFNzYxAA==","status":"delivered","timestamp":"1740589114","recipient_id":"919094995418","conversation":{"id":"c03cd21d96825132c60c264d0f35f94d","origin":{"type":"service"}},"pricing":{"billable":true,"pricing_model":"CBP","category":"service"}}]},"field":"messages"}]}]}
-2025-02-26 22:28:35 [INFO]: Interactive message sent successfully
-2025-02-26 22:29:40 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:29:40 [INFO]: Connected to MySQL database.
-2025-02-26 22:29:47 [INFO]: Message received from 919094995418: hi
-2025-02-26 22:29:47 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:29:47 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:29:47 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:29:47 [INFO]: Query results:
-2025-02-26 22:29:47 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:29:47 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:29:47 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:29:47 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:29:47 [INFO]: Message sent successfully
-2025-02-26 22:29:47 [INFO]: Welcome message sent to 919094995418
-2025-02-26 22:29:47 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 0
-2025-02-26 22:29:47 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:29:47 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":37,"MENU_NAME":"Book Appointment ","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
-2025-02-26 22:29:49 [DEBUG]: Image uploaded successfully:
-2025-02-26 22:29:50 [INFO]: Interactive message sent successfully
-2025-02-26 22:36:21 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:36:21 [INFO]: Connected to MySQL database.
-2025-02-26 22:36:27 [INFO]: Message received from 919094995418: hi
-2025-02-26 22:36:27 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:36:27 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:36:27 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:36:27 [INFO]: Query results:
-2025-02-26 22:36:27 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:36:27 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:36:27 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:36:27 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:36:27 [INFO]: Message sent successfully
-2025-02-26 22:36:27 [INFO]: Welcome message sent to 919094995418
-2025-02-26 22:36:27 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 0
-2025-02-26 22:36:27 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:36:27 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":37,"MENU_NAME":"Book Appointment ","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
-2025-02-26 22:36:29 [DEBUG]: Image uploaded successfully:
-2025-02-26 22:36:31 [INFO]: Interactive message sent successfully
-2025-02-26 22:36:31 [INFO]: Main menu sent to 919094995418
-2025-02-26 22:36:31 [INFO]: user Id: 1
-2025-02-26 22:36:51 [INFO]: Message received from 919094995418: Book Appointment
-2025-02-26 22:36:51 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:36:51 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:36:51 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:36:51 [INFO]: Query results:
-2025-02-26 22:36:51 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:36:51 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:36:51 [INFO]: Title: Book Appointment ID: 2~37~37,2~37~37
-2025-02-26 22:36:51 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:36:51 [DEBUG]: Executing query for Client_ID: 2, User_ID: 1
-2025-02-26 22:36:51 [INFO]: Appointment id: 41
-2025-02-26 22:36:51 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 37
-2025-02-26 22:36:51 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:36:51 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":38,"MENU_NAME":"Fetch Doctor","HEADER_MESSAGE":"Select a Doctor","ACTION":"Appointment_Function~POC~Specialization"}
-2025-02-26 22:36:51 [INFO]: handleAction: iAction:Appointment_Function,POC,Specialization ,iClientID:2 ,iMenuId:38, iUserValue:Book Appointment iSelectId: 37 appointment_id: 41
-2025-02-26 22:36:51 [DEBUG]: Executing query for Appointment_ID: 41, Key: Appointment_Function
-2025-02-26 22:36:51 [INFO]: JSON data updated successfully
-2025-02-26 22:36:51 [INFO]: JSON data updated successfully
-2025-02-26 22:36:51 [INFO]: Appointment updated successfully
-2025-02-26 22:36:51 [DEBUG]: Executing query for Appointment_ID: 41, Key: Department
-2025-02-26 22:36:51 [INFO]: getFromPOC: iClientId:2 , iMenuId:38 ,iKey:null
-2025-02-26 22:36:51 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 38, Specialization: null
-2025-02-26 22:36:51 [INFO]: Query results:
-2025-02-26 22:36:52 [INFO]: Radio button message sent successfully
-2025-02-26 22:36:52 [ERROR]: Error fetching main menu: Cannot read properties of null (reading 'backButton')
-2025-02-26 22:36:53 [INFO]: Message sent successfully
-2025-02-26 22:36:59 [INFO]: Message received from 919094995418: Dr. John
-2025-02-26 22:36:59 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:36:59 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:36:59 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:36:59 [INFO]: Query results:
-2025-02-26 22:36:59 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:36:59 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:36:59 [INFO]: Title: Dr. John ID: 2~38~8~41,2~37~37
-2025-02-26 22:36:59 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:36:59 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 38
-2025-02-26 22:36:59 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:36:59 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":39,"MENU_NAME":"Fetch Dates","HEADER_MESSAGE":"Select a date","ACTION":"Poc_name~FETCH_AVAILABLE_DATES_DIRECT"}
-2025-02-26 22:36:59 [INFO]: handleAction: iAction:Poc_name,FETCH_AVAILABLE_DATES_DIRECT ,iClientID:2 ,iMenuId:39, iUserValue:Dr. John iSelectId: 8 appointment_id: 41
-2025-02-26 22:36:59 [DEBUG]: Executing query for Appointment_ID: 41, POC_ID: 8, Poc_name: Dr. John
-2025-02-26 22:36:59 [INFO]: POC ID and JSON data updated successfully
-2025-02-26 22:36:59 [INFO]: Appointment updated successfully
-2025-02-26 22:36:59 [DEBUG]: Executing query for Client_ID: 2, Specialization: 8
-2025-02-26 22:36:59 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 39, POC_ID: 8
-2025-02-26 22:36:59 [INFO]: Radio button message sent successfully
-2025-02-26 22:36:59 [ERROR]: Error fetching main menu: Cannot read properties of null (reading 'backButton')
-2025-02-26 22:37:00 [INFO]: Message sent successfully
-2025-02-26 22:38:00 [INFO]: Message received from 919094995418: hi
-2025-02-26 22:38:00 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:38:00 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:38:00 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:38:00 [INFO]: Query results:
-2025-02-26 22:38:00 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:38:00 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:38:00 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:38:00 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:38:00 [INFO]: Message sent successfully
-2025-02-26 22:38:00 [INFO]: Welcome message sent to 919094995418
-2025-02-26 22:38:00 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 0
-2025-02-26 22:38:00 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:38:00 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":37,"MENU_NAME":"Book Appointment ","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
-2025-02-26 22:38:02 [DEBUG]: Image uploaded successfully:
-2025-02-26 22:38:02 [INFO]: Interactive message sent successfully
-2025-02-26 22:38:02 [INFO]: Main menu sent to 919094995418
-2025-02-26 22:38:02 [INFO]: user Id: 1
-2025-02-26 22:38:05 [INFO]: Message received from 919094995418: Book Appointment
-2025-02-26 22:38:05 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:38:05 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:38:05 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:38:05 [INFO]: Query results:
-2025-02-26 22:38:05 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:38:05 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:38:05 [INFO]: Title: Book Appointment ID: 2~37~37,2~37~37
-2025-02-26 22:38:05 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:38:05 [DEBUG]: Executing query for Client_ID: 2, User_ID: 1
-2025-02-26 22:38:05 [INFO]: Appointment id: 42
-2025-02-26 22:38:05 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 37
-2025-02-26 22:38:05 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:38:05 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":38,"MENU_NAME":"Fetch Doctor","HEADER_MESSAGE":"Select a Doctor","ACTION":"Appointment_Function~POC~Specialization"}
-2025-02-26 22:38:05 [INFO]: handleAction: iAction:Appointment_Function,POC,Specialization ,iClientID:2 ,iMenuId:38, iUserValue:Book Appointment iSelectId: 37 appointment_id: 42
-2025-02-26 22:38:05 [DEBUG]: Executing query for Appointment_ID: 42, Key: Appointment_Function
-2025-02-26 22:38:05 [INFO]: JSON data updated successfully
-2025-02-26 22:38:05 [INFO]: JSON data updated successfully
-2025-02-26 22:38:05 [INFO]: Appointment updated successfully
-2025-02-26 22:38:05 [DEBUG]: Executing query for Appointment_ID: 42, Key: Department
-2025-02-26 22:38:05 [INFO]: getFromPOC: iClientId:2 , iMenuId:38 ,iKey:null
-2025-02-26 22:38:05 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 38, Specialization: null
-2025-02-26 22:38:05 [INFO]: Query results:
-2025-02-26 22:38:06 [INFO]: Radio button message sent successfully
-2025-02-26 22:38:06 [INFO]: Interactive message sent successfully
-2025-02-26 22:38:06 [INFO]: Back button sent to 919094995418
-2025-02-26 22:38:11 [INFO]: Message received from 919094995418: Dr. John
-2025-02-26 22:38:11 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:38:11 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:38:11 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:38:11 [INFO]: Query results:
-2025-02-26 22:38:11 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:38:11 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:38:11 [INFO]: Title: Dr. John ID: 2~38~8~42,2~37~37
-2025-02-26 22:38:11 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:38:11 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 38
-2025-02-26 22:38:11 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:38:11 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":39,"MENU_NAME":"Fetch Dates","HEADER_MESSAGE":"Select a date","ACTION":"Poc_name~FETCH_AVAILABLE_DATES_DIRECT"}
-2025-02-26 22:38:11 [INFO]: handleAction: iAction:Poc_name,FETCH_AVAILABLE_DATES_DIRECT ,iClientID:2 ,iMenuId:39, iUserValue:Dr. John iSelectId: 8 appointment_id: 42
-2025-02-26 22:38:11 [DEBUG]: Executing query for Appointment_ID: 42, POC_ID: 8, Poc_name: Dr. John
-2025-02-26 22:38:11 [INFO]: POC ID and JSON data updated successfully
-2025-02-26 22:38:11 [INFO]: Appointment updated successfully
-2025-02-26 22:38:11 [DEBUG]: Executing query for Client_ID: 2, Specialization: 8
-2025-02-26 22:38:11 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 39, POC_ID: 8
-2025-02-26 22:38:12 [INFO]: Radio button message sent successfully
-2025-02-26 22:38:12 [INFO]: Interactive message sent successfully
-2025-02-26 22:38:12 [INFO]: Back button sent to 919094995418
-2025-02-26 22:38:18 [INFO]: Message received from 919094995418: 2025-02-27
-2025-02-26 22:38:18 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:38:18 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:38:18 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:38:18 [INFO]: Query results:
-2025-02-26 22:38:18 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:38:18 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:38:18 [INFO]: Title: 2025-02-27 ID: 2~39~8-2025-02-27~42,2~38~8
-2025-02-26 22:38:18 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:38:18 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 39
-2025-02-26 22:38:18 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:38:18 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":40,"MENU_NAME":"Fetch Times","HEADER_MESSAGE":"Select a time","ACTION":"Appointment_Date~FETCH_AVAILABLE_TIMES_DIRECT"}
-2025-02-26 22:38:18 [INFO]: handleAction: iAction:Appointment_Date,FETCH_AVAILABLE_TIMES_DIRECT ,iClientID:2 ,iMenuId:40, iUserValue:2025-02-27 iSelectId: 8-2025-02-27 appointment_id: 42
-2025-02-26 22:38:18 [DEBUG]: Executing query for Appointment_ID: 42, Column: Appointment_Date, Value: 2025-02-27
-2025-02-26 22:38:18 [INFO]: Appointment updated successfully
-2025-02-26 22:38:18 [INFO]: Appointment updated successfully
-2025-02-26 22:38:18 [DEBUG]: Executing query for Appointment_ID: 42, Key: Appointment_Date
-2025-02-26 22:38:18 [INFO]: getAvailableTimes: iClientId:2 ,iMenuId: 40, iKey: 8-2025-02-27, iValue: 2025-02-27
-2025-02-26 22:38:18 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 40, POC_ID: 8-2025-02-27, Schedule_Date: 2025-02-27
-2025-02-26 22:38:19 [INFO]: Radio button message sent successfully
-2025-02-26 22:38:20 [INFO]: Interactive message sent successfully
-2025-02-26 22:38:20 [INFO]: Back button sent to 919094995418
-2025-02-26 22:38:23 [INFO]: Message received from 919094995418: 10:00:00
-2025-02-26 22:38:23 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:38:23 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:38:23 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:38:23 [INFO]: Query results:
-2025-02-26 22:38:23 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:38:23 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:38:23 [INFO]: Title: 10:00:00 ID: 2~40~8-2025-02-27-10:00:00~42,2~39~8-2025-02-27
-2025-02-26 22:38:23 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:38:23 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 40
-2025-02-26 22:38:23 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:38:23 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":41,"MENU_NAME":"Confirm","HEADER_MESSAGE":"Please confirm your details","ACTION":"Appointment_Time~CONFIRM~CONFIRM"}
-2025-02-26 22:38:23 [INFO]: handleAction: iAction:Appointment_Time,CONFIRM,CONFIRM ,iClientID:2 ,iMenuId:41, iUserValue:10:00:00 iSelectId: 8-2025-02-27-10:00:00 appointment_id: 42
-2025-02-26 22:38:23 [DEBUG]: Executing query for Appointment_ID: 42, Column: Appointment_Time, Value: 10:00:00
-2025-02-26 22:38:23 [INFO]: Appointment updated successfully
-2025-02-26 22:38:23 [INFO]: Appointment updated successfully
-2025-02-26 22:38:23 [DEBUG]: Executing query for Client_ID: 2, Template_Name: CONFIRM
-2025-02-26 22:38:23 [DEBUG]: Executing query for Appointment_ID: 42
-2025-02-26 22:38:23 [INFO]: JSON Data: {
-  "Poc_ID": "8",
-  "Poc_name": "Dr. John",
-  "Appointment_Date": "2025-02-27",
+2025-03-08 19:02:48 [INFO]: Server is running on http://localhost:9000
+2025-03-08 19:02:48 [INFO]: Connected to MySQL database.
+2025-03-08 19:11:03 [INFO]: Webhook verified successfully.
+2025-03-08 19:11:25 [INFO]: Message details:
+2025-03-08 19:11:25 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:11:25 [INFO]: Fetched client ID:
+2025-03-08 19:11:25 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:11:25 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:11:25 [INFO]: Query results:
+2025-03-08 19:11:25 [INFO]: Fetched POC details:
+2025-03-08 19:11:25 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:11:25 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:11:25 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:11:25 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:11:26 [INFO]: Message sent successfully
+2025-03-08 19:11:26 [INFO]: Welcome message sent to 919094995418
+2025-03-08 19:11:26 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 0
+2025-03-08 19:11:26 [INFO]: Query executed successfully. 3 row(s) returned.
+2025-03-08 19:11:26 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":1,"MENU_NAME":"Book Appointment","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
+2025-03-08 19:11:26 [DEBUG]: Row 2: {"CLIENT_ID":1,"MENU_ID":2,"MENU_NAME":"Reschedule","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:11:26 [DEBUG]: Row 3: {"CLIENT_ID":1,"MENU_ID":3,"MENU_NAME":"Cancel Appointment","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:11:28 [DEBUG]: Image uploaded successfully:
+2025-03-08 19:11:29 [INFO]: Interactive message sent successfully
+2025-03-08 19:11:29 [INFO]: Main menu sent to 919094995418
+2025-03-08 19:11:29 [INFO]: user Id: 1
+2025-03-08 19:11:33 [INFO]: Message details:
+2025-03-08 19:11:33 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:11:33 [INFO]: Fetched client ID:
+2025-03-08 19:11:33 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:11:33 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:11:33 [INFO]: Query results:
+2025-03-08 19:11:33 [INFO]: Fetched POC details:
+2025-03-08 19:11:33 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:11:33 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:11:33 [INFO]: Title: Book Appointment ID: 1~1~1,1~1~1
+2025-03-08 19:11:33 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:11:33 [DEBUG]: Executing query for Client_ID: 1, User_ID: 1
+2025-03-08 19:11:33 [INFO]: Appointment id: 63
+2025-03-08 19:11:33 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 1
+2025-03-08 19:11:33 [INFO]: Query executed successfully. 4 row(s) returned.
+2025-03-08 19:11:33 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":4,"MENU_NAME":"Emergency","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:11:33 [DEBUG]: Row 2: {"CLIENT_ID":1,"MENU_ID":5,"MENU_NAME":"Tele Consultation","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:11:33 [DEBUG]: Row 3: {"CLIENT_ID":1,"MENU_ID":6,"MENU_NAME":"Direct Consultation","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:11:33 [DEBUG]: Row 4: {"CLIENT_ID":1,"MENU_ID":7,"MENU_NAME":"Master Health Checkup","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:11:33 [INFO]: Radio button message sent successfully
+2025-03-08 19:11:34 [INFO]: Interactive message sent successfully
+2025-03-08 19:11:34 [INFO]: Back button sent to 919094995418
+2025-03-08 19:11:46 [INFO]: Message details:
+2025-03-08 19:11:46 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:11:46 [INFO]: Fetched client ID:
+2025-03-08 19:11:46 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:11:46 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:11:46 [INFO]: Query results:
+2025-03-08 19:11:46 [INFO]: Fetched POC details:
+2025-03-08 19:11:46 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:11:46 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:11:46 [INFO]: Title: Direct Consultation ID: 1~6~undefined~63,1~1~1
+2025-03-08 19:11:46 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:11:46 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 6
+2025-03-08 19:11:46 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:11:46 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":16,"MENU_NAME":"Show Department List","HEADER_MESSAGE":"Select the Department","ACTION":"Appointment_Type~LIST~DEPARTMENT"}
+2025-03-08 19:11:46 [INFO]: handleAction: iAction:Appointment_Type,LIST,DEPARTMENT ,iClientID:1 ,iMenuId:16, iUserValue:Direct Consultation iSelectId: undefined appointment_id: 63
+2025-03-08 19:11:46 [DEBUG]: Executing query for Appointment_ID: 63, Column: Appointment_Type, Value: Direct Consultation
+2025-03-08 19:11:46 [INFO]: Appointment updated successfully
+2025-03-08 19:11:46 [INFO]: Appointment updated successfully
+2025-03-08 19:11:46 [INFO]: getFromList: iClientId:1 , iMenuId:16 ,iKey:DEPARTMENT , iLang:ENG
+2025-03-08 19:11:46 [DEBUG]: Executing query for Client_ID: 1, Menu_ID: 16, Key_name: DEPARTMENT, Lang: ENG
+2025-03-08 19:11:46 [INFO]: Query results:
+2025-03-08 19:11:47 [INFO]: Radio button message sent successfully
+2025-03-08 19:11:47 [INFO]: Interactive message sent successfully
+2025-03-08 19:11:47 [INFO]: Back button sent to 919094995418
+2025-03-08 19:11:56 [INFO]: Message details:
+2025-03-08 19:11:56 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:11:56 [INFO]: Fetched client ID:
+2025-03-08 19:11:56 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:11:56 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:11:56 [INFO]: Query results:
+2025-03-08 19:11:56 [INFO]: Fetched POC details:
+2025-03-08 19:11:56 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:11:56 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:11:56 [INFO]: Title: Cardiology ID: 1~16~1~63,1~6~undefined
+2025-03-08 19:11:56 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:11:56 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 16
+2025-03-08 19:11:56 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:11:56 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":17,"MENU_NAME":"Select Doctor Direct","HEADER_MESSAGE":"Select the doctor","ACTION":"Department~POC~Specialization"}
+2025-03-08 19:11:56 [INFO]: handleAction: iAction:Department,POC,Specialization ,iClientID:1 ,iMenuId:17, iUserValue:Cardiology iSelectId: 1 appointment_id: 63
+2025-03-08 19:11:56 [DEBUG]: Executing query for Appointment_ID: 63, Key: Department
+2025-03-08 19:11:56 [INFO]: JSON data updated successfully
+2025-03-08 19:11:56 [INFO]: JSON data updated successfully
+2025-03-08 19:11:56 [INFO]: Appointment updated successfully
+2025-03-08 19:11:56 [DEBUG]: Executing query for Appointment_ID: 63, Key: Department
+2025-03-08 19:11:56 [INFO]: getFromPOC: iClientId:1 , iMenuId:17 ,iKey:Cardiology
+2025-03-08 19:11:56 [DEBUG]: Executing query for Client_ID: 1, Menu_ID: 17, Specialization: Cardiology
+2025-03-08 19:11:56 [INFO]: Query results:
+2025-03-08 19:11:57 [INFO]: Radio button message sent successfully
+2025-03-08 19:11:57 [INFO]: Interactive message sent successfully
+2025-03-08 19:11:57 [INFO]: Back button sent to 919094995418
+2025-03-08 19:13:00 [INFO]: Message details:
+2025-03-08 19:13:00 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:13:00 [INFO]: Fetched client ID:
+2025-03-08 19:13:00 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:13:00 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:13:00 [INFO]: Query results:
+2025-03-08 19:13:00 [INFO]: Fetched POC details:
+2025-03-08 19:13:00 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:13:00 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:13:00 [INFO]: Title: Dr. Harry Smith ID: 1~17~1~63,1~16~1
+2025-03-08 19:13:00 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:13:00 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 17
+2025-03-08 19:13:00 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:13:00 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":18,"MENU_NAME":"Select Date Direct","HEADER_MESSAGE":"Select the date","ACTION":"Poc_name~FETCH_AVAILABLE_DATES_DIRECT"}
+2025-03-08 19:13:00 [INFO]: handleAction: iAction:Poc_name,FETCH_AVAILABLE_DATES_DIRECT ,iClientID:1 ,iMenuId:18, iUserValue:Dr. Harry Smith iSelectId: 1 appointment_id: 63
+2025-03-08 19:13:00 [DEBUG]: Executing query for Appointment_ID: 63, POC_ID: 1, Poc_name: Dr. Harry Smith
+2025-03-08 19:13:00 [INFO]: POC ID and JSON data updated successfully
+2025-03-08 19:13:00 [INFO]: Appointment updated successfully
+2025-03-08 19:13:00 [DEBUG]: Executing query for Client_ID: 1, Specialization: 1
+2025-03-08 19:13:00 [DEBUG]: Executing query for Client_ID: 1, Menu_ID: 18, POC_ID: 1
+2025-03-08 19:13:00 [INFO]: Radio button message sent successfully
+2025-03-08 19:13:01 [INFO]: Interactive message sent successfully
+2025-03-08 19:13:01 [INFO]: Back button sent to 919094995418
+2025-03-08 19:13:13 [INFO]: Message details:
+2025-03-08 19:13:13 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:13:13 [INFO]: Fetched client ID:
+2025-03-08 19:13:13 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:13:13 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:13:13 [INFO]: Query results:
+2025-03-08 19:13:13 [INFO]: Fetched POC details:
+2025-03-08 19:13:13 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:13:13 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:13:13 [INFO]: Title: 2025-03-10 ID: 1~18~1-2025-03-10~63,1~17~1
+2025-03-08 19:13:13 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:13:13 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 18
+2025-03-08 19:13:13 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:13:13 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":19,"MENU_NAME":"Select Time Direct","HEADER_MESSAGE":"Select the time","ACTION":"Appointment_Date~FETCH_AVAILABLE_TIMES_DIRECT"}
+2025-03-08 19:13:13 [INFO]: handleAction: iAction:Appointment_Date,FETCH_AVAILABLE_TIMES_DIRECT ,iClientID:1 ,iMenuId:19, iUserValue:2025-03-10 iSelectId: 1-2025-03-10 appointment_id: 63
+2025-03-08 19:13:13 [DEBUG]: Executing query for Appointment_ID: 63, Column: Appointment_Date, Value: 2025-03-10
+2025-03-08 19:13:13 [INFO]: Appointment updated successfully
+2025-03-08 19:13:13 [INFO]: Appointment updated successfully
+2025-03-08 19:13:13 [DEBUG]: Executing query for Appointment_ID: 63, Key: Appointment_Date
+2025-03-08 19:13:13 [INFO]: getAvailableTimes: iClientId:1 ,iMenuId: 19, iKey: 1-2025-03-10, iValue: 2025-03-10
+2025-03-08 19:13:13 [DEBUG]: Executing query for Client_ID: 1, Menu_ID: 19, POC_ID: 1-2025-03-10, Schedule_Date: 2025-03-10
+2025-03-08 19:13:14 [INFO]: Radio button message sent successfully
+2025-03-08 19:13:14 [INFO]: Interactive message sent successfully
+2025-03-08 19:13:14 [INFO]: Back button sent to 919094995418
+2025-03-08 19:13:20 [INFO]: Message details:
+2025-03-08 19:13:20 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:13:20 [INFO]: Fetched client ID:
+2025-03-08 19:13:20 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:13:20 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:13:20 [INFO]: Query results:
+2025-03-08 19:13:20 [INFO]: Fetched POC details:
+2025-03-08 19:13:20 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:13:20 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:13:20 [INFO]: Title: 10:00:00 ID: 1~19~1-2025-03-10-10:00:00~63,1~18~1-2025-03-10
+2025-03-08 19:13:20 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:13:20 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 19
+2025-03-08 19:13:20 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:13:20 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":20,"MENU_NAME":"Confirm Direct Appointment","HEADER_MESSAGE":"Please confirm your details.","ACTION":"Appointment_Time~CONFIRM~CONFIRM_DIRECT"}
+2025-03-08 19:13:20 [INFO]: handleAction: iAction:Appointment_Time,CONFIRM,CONFIRM_DIRECT ,iClientID:1 ,iMenuId:20, iUserValue:10:00:00 iSelectId: 1-2025-03-10-10:00:00 appointment_id: 63
+2025-03-08 19:13:20 [DEBUG]: Executing query for Appointment_ID: 63, Column: Appointment_Time, Value: 10:00:00
+2025-03-08 19:13:20 [INFO]: Appointment updated successfully
+2025-03-08 19:13:20 [INFO]: Appointment updated successfully
+2025-03-08 19:13:20 [DEBUG]: Executing query for Client_ID: 1, Template_Name: CONFIRM_DIRECT
+2025-03-08 19:13:20 [DEBUG]: Executing query for Appointment_ID: 63
+2025-03-08 19:13:21 [INFO]: JSON Data: {
+  "Poc_ID": "1",
+  "Poc_name": "Dr. Harry Smith",
+  "Department": "Cardiology",
+  "Appointment_Date": "2025-03-10",
   "Appointment_Time": "10:00:00",
-  "Appointment_Function": "Book Appointment"
+  "Appointment_Type": "Direct Consultation"
 }
-2025-02-26 22:38:24 [INFO]: Message sent successfully
-2025-02-26 22:38:24 [INFO]: Radio button message sent successfully
-2025-02-26 22:38:25 [INFO]: Interactive message sent successfully
-2025-02-26 22:38:25 [INFO]: Back button sent to 919094995418
-2025-02-26 22:38:28 [INFO]: Message received from 919094995418: Confirm
-2025-02-26 22:38:28 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:38:28 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:38:28 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:38:28 [INFO]: Query results:
-2025-02-26 22:38:28 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:38:28 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:38:28 [INFO]: Title: Confirm ID: 2~41~Confirm~42,2~40~8-2025-02-27-10:00:00
-2025-02-26 22:38:28 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:38:28 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 41
-2025-02-26 22:38:28 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:38:28 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":42,"MENU_NAME":"Make Payment for Direct","HEADER_MESSAGE":"Please make a payment to confirm your Direct appointment","ACTION":"Confirm_Status~PAYMENT~PAYMENT_DIRECT"}
-2025-02-26 22:38:28 [INFO]: handleAction: iAction:Confirm_Status,PAYMENT,PAYMENT_DIRECT ,iClientID:2 ,iMenuId:42, iUserValue:Confirm iSelectId: Confirm appointment_id: 42
-2025-02-26 22:38:28 [DEBUG]: Executing query for Appointment_ID: 42, Key: Confirm_Status
-2025-02-26 22:38:28 [INFO]: JSON data updated successfully
-2025-02-26 22:38:28 [INFO]: JSON data updated successfully
-2025-02-26 22:38:28 [INFO]: Appointment updated successfully
-2025-02-26 22:38:29 [ERROR]: Error fetching main menu: Request failed with status code 400
-2025-02-26 22:38:30 [INFO]: Message sent successfully
-2025-02-26 22:39:34 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:39:34 [INFO]: Connected to MySQL database.
-2025-02-26 22:39:39 [INFO]: Message received from: 919094995418, Content: hi
-2025-02-26 22:39:39 [DEBUG]: Message type: text
-2025-02-26 22:39:39 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:39:39 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:39:39 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:39:39 [INFO]: Query results:
-2025-02-26 22:39:39 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:39:39 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:39:39 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:39:39 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:39:40 [INFO]: Message sent successfully
-2025-02-26 22:39:40 [INFO]: Welcome message sent to 919094995418
-2025-02-26 22:39:40 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 0
-2025-02-26 22:39:40 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:39:40 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":37,"MENU_NAME":"Book Appointment ","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
-2025-02-26 22:39:41 [DEBUG]: Image uploaded successfully:
-2025-02-26 22:39:42 [INFO]: Interactive message sent successfully
-2025-02-26 22:39:42 [INFO]: Main menu sent to 919094995418
-2025-02-26 22:39:42 [INFO]: user Id: 1
-2025-02-26 22:39:55 [INFO]: Message received from: 919094995418, Content: Book Appointment
-2025-02-26 22:39:55 [DEBUG]: Message type: interactive
-2025-02-26 22:39:55 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:39:55 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:39:55 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:39:55 [INFO]: Query results:
-2025-02-26 22:39:55 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:39:55 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:39:55 [INFO]: Title: Book Appointment ID: 2~37~37,2~37~37
-2025-02-26 22:39:55 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:39:55 [DEBUG]: Executing query for Client_ID: 2, User_ID: 1
-2025-02-26 22:39:55 [INFO]: Appointment id: 43
-2025-02-26 22:39:55 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 37
-2025-02-26 22:39:55 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:39:55 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":38,"MENU_NAME":"Fetch Doctor","HEADER_MESSAGE":"Select a Doctor","ACTION":"Appointment_Function~POC~Specialization"}
-2025-02-26 22:39:55 [INFO]: handleAction: iAction:Appointment_Function,POC,Specialization ,iClientID:2 ,iMenuId:38, iUserValue:Book Appointment iSelectId: 37 appointment_id: 43
-2025-02-26 22:39:55 [DEBUG]: Executing query for Appointment_ID: 43, Key: Appointment_Function
-2025-02-26 22:39:55 [INFO]: JSON data updated successfully
-2025-02-26 22:39:55 [INFO]: JSON data updated successfully
-2025-02-26 22:39:55 [INFO]: Appointment updated successfully
-2025-02-26 22:39:55 [DEBUG]: Executing query for Appointment_ID: 43, Key: Department
-2025-02-26 22:39:55 [INFO]: getFromPOC: iClientId:2 , iMenuId:38 ,iKey:null
-2025-02-26 22:39:55 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 38, Specialization: null
-2025-02-26 22:39:55 [INFO]: Query results:
-2025-02-26 22:39:55 [INFO]: Radio button message sent successfully
-2025-02-26 22:39:56 [INFO]: Interactive message sent successfully
-2025-02-26 22:39:56 [INFO]: Back button sent to 919094995418
-2025-02-26 22:40:02 [INFO]: Message received from: 919094995418, Content: Dr. John
-2025-02-26 22:40:02 [DEBUG]: Message type: interactive
-2025-02-26 22:40:02 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:40:02 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:40:02 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:40:02 [INFO]: Query results:
-2025-02-26 22:40:02 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:40:02 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:40:02 [INFO]: Title: Dr. John ID: 2~38~8~43,2~37~37
-2025-02-26 22:40:02 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:40:02 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 38
-2025-02-26 22:40:02 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:40:02 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":39,"MENU_NAME":"Fetch Dates","HEADER_MESSAGE":"Select a date","ACTION":"Poc_name~FETCH_AVAILABLE_DATES_DIRECT"}
-2025-02-26 22:40:02 [INFO]: handleAction: iAction:Poc_name,FETCH_AVAILABLE_DATES_DIRECT ,iClientID:2 ,iMenuId:39, iUserValue:Dr. John iSelectId: 8 appointment_id: 43
-2025-02-26 22:40:02 [DEBUG]: Executing query for Appointment_ID: 43, POC_ID: 8, Poc_name: Dr. John
-2025-02-26 22:40:02 [INFO]: POC ID and JSON data updated successfully
-2025-02-26 22:40:02 [INFO]: Appointment updated successfully
-2025-02-26 22:40:02 [DEBUG]: Executing query for Client_ID: 2, Specialization: 8
-2025-02-26 22:40:02 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 39, POC_ID: 8
-2025-02-26 22:40:02 [INFO]: Radio button message sent successfully
-2025-02-26 22:40:03 [INFO]: Interactive message sent successfully
-2025-02-26 22:40:03 [INFO]: Back button sent to 919094995418
-2025-02-26 22:40:10 [INFO]: Message received from: 919094995418, Content: 2025-02-27
-2025-02-26 22:40:10 [DEBUG]: Message type: interactive
-2025-02-26 22:40:10 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:40:10 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:40:10 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:40:10 [INFO]: Query results:
-2025-02-26 22:40:10 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:40:10 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:40:10 [INFO]: Title: 2025-02-27 ID: 2~39~8-2025-02-27~43,2~38~8
-2025-02-26 22:40:10 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:40:10 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 39
-2025-02-26 22:40:10 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:40:10 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":40,"MENU_NAME":"Fetch Times","HEADER_MESSAGE":"Select a time","ACTION":"Appointment_Date~FETCH_AVAILABLE_TIMES_DIRECT"}
-2025-02-26 22:40:10 [INFO]: handleAction: iAction:Appointment_Date,FETCH_AVAILABLE_TIMES_DIRECT ,iClientID:2 ,iMenuId:40, iUserValue:2025-02-27 iSelectId: 8-2025-02-27 appointment_id: 43
-2025-02-26 22:40:10 [DEBUG]: Executing query for Appointment_ID: 43, Column: Appointment_Date, Value: 2025-02-27
-2025-02-26 22:40:10 [INFO]: Appointment updated successfully
-2025-02-26 22:40:10 [INFO]: Appointment updated successfully
-2025-02-26 22:40:10 [DEBUG]: Executing query for Appointment_ID: 43, Key: Appointment_Date
-2025-02-26 22:40:10 [INFO]: getAvailableTimes: iClientId:2 ,iMenuId: 40, iKey: 8-2025-02-27, iValue: 2025-02-27
-2025-02-26 22:40:10 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 40, POC_ID: 8-2025-02-27, Schedule_Date: 2025-02-27
-2025-02-26 22:40:11 [INFO]: Radio button message sent successfully
-2025-02-26 22:40:12 [INFO]: Interactive message sent successfully
-2025-02-26 22:40:12 [INFO]: Back button sent to 919094995418
-2025-02-26 22:40:17 [INFO]: Message received from: 919094995418, Content: 10:00:00
-2025-02-26 22:40:17 [DEBUG]: Message type: interactive
-2025-02-26 22:40:17 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:40:17 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:40:17 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:40:17 [INFO]: Query results:
-2025-02-26 22:40:17 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:40:17 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:40:17 [INFO]: Title: 10:00:00 ID: 2~40~8-2025-02-27-10:00:00~43,2~39~8-2025-02-27
-2025-02-26 22:40:17 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:40:17 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 40
-2025-02-26 22:40:17 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:40:17 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":41,"MENU_NAME":"Confirm","HEADER_MESSAGE":"Please confirm your details","ACTION":"Appointment_Time~CONFIRM~CONFIRM"}
-2025-02-26 22:40:17 [INFO]: handleAction: iAction:Appointment_Time,CONFIRM,CONFIRM ,iClientID:2 ,iMenuId:41, iUserValue:10:00:00 iSelectId: 8-2025-02-27-10:00:00 appointment_id: 43
-2025-02-26 22:40:17 [DEBUG]: Executing query for Appointment_ID: 43, Column: Appointment_Time, Value: 10:00:00
-2025-02-26 22:40:17 [INFO]: Appointment updated successfully
-2025-02-26 22:40:17 [INFO]: Appointment updated successfully
-2025-02-26 22:40:17 [DEBUG]: Executing query for Client_ID: 2, Template_Name: CONFIRM
-2025-02-26 22:40:17 [DEBUG]: Executing query for Appointment_ID: 43
-2025-02-26 22:40:17 [INFO]: JSON Data: {
-  "Poc_ID": "8",
-  "Poc_name": "Dr. John",
-  "Appointment_Date": "2025-02-27",
-  "Appointment_Time": "10:00:00",
-  "Appointment_Function": "Book Appointment"
-}
-2025-02-26 22:40:17 [INFO]: Message sent successfully
-2025-02-26 22:40:18 [INFO]: Radio button message sent successfully
-2025-02-26 22:40:18 [INFO]: Interactive message sent successfully
-2025-02-26 22:40:18 [INFO]: Back button sent to 919094995418
-2025-02-26 22:40:24 [INFO]: Message received from: 919094995418, Content: Confirm
-2025-02-26 22:40:24 [DEBUG]: Message type: interactive
-2025-02-26 22:40:24 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:40:24 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:40:24 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:40:24 [INFO]: Query results:
-2025-02-26 22:40:24 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:40:24 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:40:24 [INFO]: Title: Confirm ID: 2~41~Confirm~43,2~40~8-2025-02-27-10:00:00
-2025-02-26 22:40:24 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:40:24 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 41
-2025-02-26 22:40:24 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:40:24 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":42,"MENU_NAME":"Make Payment for Direct","HEADER_MESSAGE":"Please make a payment to confirm your Direct appointment","ACTION":"Confirm_Status~PAYMENT~PAYMENT_DIRECT"}
-2025-02-26 22:40:24 [INFO]: handleAction: iAction:Confirm_Status,PAYMENT,PAYMENT_DIRECT ,iClientID:2 ,iMenuId:42, iUserValue:Confirm iSelectId: Confirm appointment_id: 43
-2025-02-26 22:40:24 [DEBUG]: Executing query for Appointment_ID: 43, Key: Confirm_Status
-2025-02-26 22:40:24 [INFO]: JSON data updated successfully
-2025-02-26 22:40:24 [INFO]: JSON data updated successfully
-2025-02-26 22:40:24 [INFO]: Appointment updated successfully
-2025-02-26 22:40:24 [ERROR]: Error fetching main menu: Request failed with status code 400
-2025-02-26 22:40:25 [INFO]: Message sent successfully
-2025-02-26 22:43:22 [INFO]: Server is running on http://localhost:9000
-2025-02-26 22:43:22 [INFO]: Connected to MySQL database.
-2025-02-26 22:43:24 [INFO]: Message received from: 919094995418, Content: Book Appointment
-2025-02-26 22:43:24 [DEBUG]: Message type: interactive
-2025-02-26 22:43:24 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:43:24 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:43:24 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:43:24 [INFO]: Query results:
-2025-02-26 22:43:24 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:43:24 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:43:24 [INFO]: Title: Book Appointment ID: 2~37~37,2~37~37
-2025-02-26 22:43:24 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:43:24 [DEBUG]: Executing query for Client_ID: 2, User_ID: 1
-2025-02-26 22:43:24 [INFO]: Appointment id: 44
-2025-02-26 22:43:24 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 37
-2025-02-26 22:43:24 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:43:24 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":38,"MENU_NAME":"Fetch Doctor","HEADER_MESSAGE":"Select a Doctor","ACTION":"Appointment_Function~POC~Specialization"}
-2025-02-26 22:43:24 [INFO]: handleAction: iAction:Appointment_Function,POC,Specialization ,iClientID:2 ,iMenuId:38, iUserValue:Book Appointment iSelectId: 37 appointment_id: 44
-2025-02-26 22:43:24 [DEBUG]: Executing query for Appointment_ID: 44, Key: Appointment_Function
-2025-02-26 22:43:24 [INFO]: JSON data updated successfully
-2025-02-26 22:43:24 [INFO]: JSON data updated successfully
-2025-02-26 22:43:24 [INFO]: Appointment updated successfully
-2025-02-26 22:43:24 [DEBUG]: Executing query for Appointment_ID: 44, Key: Department
-2025-02-26 22:43:24 [INFO]: getFromPOC: iClientId:2 , iMenuId:38 ,iKey:null
-2025-02-26 22:43:24 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 38, Specialization: null
-2025-02-26 22:43:24 [INFO]: Query results:
-2025-02-26 22:43:25 [INFO]: Radio button message sent successfully
-2025-02-26 22:43:26 [INFO]: Interactive message sent successfully
-2025-02-26 22:43:26 [INFO]: Back button sent to 919094995418
-2025-02-26 22:43:31 [INFO]: Message received from: 919094995418, Content: hi
-2025-02-26 22:43:31 [DEBUG]: Message type: text
-2025-02-26 22:43:31 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:43:31 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:43:31 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:43:31 [INFO]: Query results:
-2025-02-26 22:43:31 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:43:31 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:43:31 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:43:31 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:43:31 [INFO]: Message sent successfully
-2025-02-26 22:43:31 [INFO]: Welcome message sent to 919094995418
-2025-02-26 22:43:31 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 0
-2025-02-26 22:43:31 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:43:31 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":37,"MENU_NAME":"Book Appointment ","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
-2025-02-26 22:43:33 [DEBUG]: Image uploaded successfully:
-2025-02-26 22:43:34 [INFO]: Interactive message sent successfully
-2025-02-26 22:43:34 [INFO]: Main menu sent to 919094995418
-2025-02-26 22:43:34 [INFO]: user Id: 1
-2025-02-26 22:43:38 [INFO]: Message received from: 919094995418, Content: Book Appointment
-2025-02-26 22:43:38 [DEBUG]: Message type: interactive
-2025-02-26 22:43:38 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:43:38 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:43:38 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:43:38 [INFO]: Query results:
-2025-02-26 22:43:38 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:43:38 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:43:38 [INFO]: Title: Book Appointment ID: 2~37~37,2~37~37
-2025-02-26 22:43:38 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:43:38 [DEBUG]: Executing query for Client_ID: 2, User_ID: 1
-2025-02-26 22:43:38 [INFO]: Appointment id: 45
-2025-02-26 22:43:38 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 37
-2025-02-26 22:43:38 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:43:38 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":38,"MENU_NAME":"Fetch Doctor","HEADER_MESSAGE":"Select a Doctor","ACTION":"Appointment_Function~POC~Specialization"}
-2025-02-26 22:43:38 [INFO]: handleAction: iAction:Appointment_Function,POC,Specialization ,iClientID:2 ,iMenuId:38, iUserValue:Book Appointment iSelectId: 37 appointment_id: 45
-2025-02-26 22:43:38 [DEBUG]: Executing query for Appointment_ID: 45, Key: Appointment_Function
-2025-02-26 22:43:38 [INFO]: JSON data updated successfully
-2025-02-26 22:43:38 [INFO]: JSON data updated successfully
-2025-02-26 22:43:38 [INFO]: Appointment updated successfully
-2025-02-26 22:43:38 [DEBUG]: Executing query for Appointment_ID: 45, Key: Department
-2025-02-26 22:43:38 [INFO]: getFromPOC: iClientId:2 , iMenuId:38 ,iKey:null
-2025-02-26 22:43:38 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 38, Specialization: null
-2025-02-26 22:43:38 [INFO]: Query results:
-2025-02-26 22:43:39 [INFO]: Radio button message sent successfully
-2025-02-26 22:43:39 [INFO]: Interactive message sent successfully
-2025-02-26 22:43:39 [INFO]: Back button sent to 919094995418
-2025-02-26 22:43:44 [INFO]: Message received from: 919094995418, Content: Dr. John
-2025-02-26 22:43:44 [DEBUG]: Message type: interactive
-2025-02-26 22:43:44 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:43:44 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:43:44 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:43:44 [INFO]: Query results:
-2025-02-26 22:43:44 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:43:44 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:43:44 [INFO]: Title: Dr. John ID: 2~38~8~45,2~37~37
-2025-02-26 22:43:44 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:43:44 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 38
-2025-02-26 22:43:44 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:43:44 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":39,"MENU_NAME":"Fetch Dates","HEADER_MESSAGE":"Select a date","ACTION":"Poc_name~FETCH_AVAILABLE_DATES_DIRECT"}
-2025-02-26 22:43:44 [INFO]: handleAction: iAction:Poc_name,FETCH_AVAILABLE_DATES_DIRECT ,iClientID:2 ,iMenuId:39, iUserValue:Dr. John iSelectId: 8 appointment_id: 45
-2025-02-26 22:43:44 [DEBUG]: Executing query for Appointment_ID: 45, POC_ID: 8, Poc_name: Dr. John
-2025-02-26 22:43:45 [INFO]: POC ID and JSON data updated successfully
-2025-02-26 22:43:45 [INFO]: Appointment updated successfully
-2025-02-26 22:43:45 [DEBUG]: Executing query for Client_ID: 2, Specialization: 8
-2025-02-26 22:43:45 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 39, POC_ID: 8
-2025-02-26 22:43:45 [INFO]: Radio button message sent successfully
-2025-02-26 22:43:46 [INFO]: Interactive message sent successfully
-2025-02-26 22:43:46 [INFO]: Back button sent to 919094995418
-2025-02-26 22:43:50 [INFO]: Message received from: 919094995418, Content: 2025-02-27
-2025-02-26 22:43:50 [DEBUG]: Message type: interactive
-2025-02-26 22:43:50 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:43:50 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:43:50 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:43:50 [INFO]: Query results:
-2025-02-26 22:43:50 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:43:50 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:43:50 [INFO]: Title: 2025-02-27 ID: 2~39~8-2025-02-27~45,2~38~8
-2025-02-26 22:43:50 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:43:50 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 39
-2025-02-26 22:43:50 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:43:50 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":40,"MENU_NAME":"Fetch Times","HEADER_MESSAGE":"Select a time","ACTION":"Appointment_Date~FETCH_AVAILABLE_TIMES_DIRECT"}
-2025-02-26 22:43:50 [INFO]: handleAction: iAction:Appointment_Date,FETCH_AVAILABLE_TIMES_DIRECT ,iClientID:2 ,iMenuId:40, iUserValue:2025-02-27 iSelectId: 8-2025-02-27 appointment_id: 45
-2025-02-26 22:43:50 [DEBUG]: Executing query for Appointment_ID: 45, Column: Appointment_Date, Value: 2025-02-27
-2025-02-26 22:43:50 [INFO]: Appointment updated successfully
-2025-02-26 22:43:50 [INFO]: Appointment updated successfully
-2025-02-26 22:43:50 [DEBUG]: Executing query for Appointment_ID: 45, Key: Appointment_Date
-2025-02-26 22:43:50 [INFO]: getAvailableTimes: iClientId:2 ,iMenuId: 40, iKey: 8-2025-02-27, iValue: 2025-02-27
-2025-02-26 22:43:50 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 40, POC_ID: 8-2025-02-27, Schedule_Date: 2025-02-27
-2025-02-26 22:43:51 [INFO]: Radio button message sent successfully
-2025-02-26 22:43:52 [INFO]: Interactive message sent successfully
-2025-02-26 22:43:52 [INFO]: Back button sent to 919094995418
-2025-02-26 22:43:57 [INFO]: Message received from: 919094995418, Content: 10:00:00
-2025-02-26 22:43:57 [DEBUG]: Message type: interactive
-2025-02-26 22:43:57 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:43:57 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:43:57 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:43:57 [INFO]: Query results:
-2025-02-26 22:43:57 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:43:57 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:43:57 [INFO]: Title: 10:00:00 ID: 2~40~8-2025-02-27-10:00:00~45,2~39~8-2025-02-27
-2025-02-26 22:43:57 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:43:57 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 40
-2025-02-26 22:43:57 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:43:57 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":41,"MENU_NAME":"Confirm","HEADER_MESSAGE":"Please confirm your details","ACTION":"Appointment_Time~CONFIRM~CONFIRM"}
-2025-02-26 22:43:57 [INFO]: handleAction: iAction:Appointment_Time,CONFIRM,CONFIRM ,iClientID:2 ,iMenuId:41, iUserValue:10:00:00 iSelectId: 8-2025-02-27-10:00:00 appointment_id: 45
-2025-02-26 22:43:57 [DEBUG]: Executing query for Appointment_ID: 45, Column: Appointment_Time, Value: 10:00:00
-2025-02-26 22:43:57 [INFO]: Appointment updated successfully
-2025-02-26 22:43:57 [INFO]: Appointment updated successfully
-2025-02-26 22:43:57 [DEBUG]: Executing query for Client_ID: 2, Template_Name: CONFIRM
-2025-02-26 22:43:57 [DEBUG]: Executing query for Appointment_ID: 45
-2025-02-26 22:43:57 [INFO]: JSON Data: {
-  "Poc_ID": "8",
-  "Poc_name": "Dr. John",
-  "Appointment_Date": "2025-02-27",
-  "Appointment_Time": "10:00:00",
-  "Appointment_Function": "Book Appointment"
-}
-2025-02-26 22:43:57 [INFO]: Message sent successfully
-2025-02-26 22:43:58 [INFO]: Radio button message sent successfully
-2025-02-26 22:43:59 [INFO]: Interactive message sent successfully
-2025-02-26 22:43:59 [INFO]: Back button sent to 919094995418
-2025-02-26 22:44:03 [INFO]: Message received from: 919094995418, Content: Confirm
-2025-02-26 22:44:03 [DEBUG]: Message type: interactive
-2025-02-26 22:44:03 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:44:03 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:44:03 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:44:03 [INFO]: Query results:
-2025-02-26 22:44:03 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:44:03 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:44:03 [INFO]: Title: Confirm ID: 2~41~Confirm~45,2~40~8-2025-02-27-10:00:00
-2025-02-26 22:44:03 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:44:03 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 41
-2025-02-26 22:44:03 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:44:03 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":42,"MENU_NAME":"Make Payment for Direct","HEADER_MESSAGE":"Please make a payment to confirm your Direct appointment","ACTION":"Confirm_Status~PAYMENT~PAYMENT_DIRECT"}
-2025-02-26 22:44:03 [INFO]: handleAction: iAction:Confirm_Status,PAYMENT,PAYMENT_DIRECT ,iClientID:2 ,iMenuId:42, iUserValue:Confirm iSelectId: Confirm appointment_id: 45
-2025-02-26 22:44:03 [DEBUG]: Executing query for Appointment_ID: 45, Key: Confirm_Status
-2025-02-26 22:44:03 [INFO]: JSON data updated successfully
-2025-02-26 22:44:03 [INFO]: JSON data updated successfully
-2025-02-26 22:44:03 [INFO]: Appointment updated successfully
-2025-02-26 22:44:04 [ERROR]: Error fetching main menu: Request failed with status code 400
-2025-02-26 22:44:04 [INFO]: Message sent successfully
-2025-02-26 22:45:20 [INFO]: Message received from: 919094995418, Content: hi
-2025-02-26 22:45:20 [DEBUG]: Message type: text
-2025-02-26 22:45:20 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:45:20 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:45:20 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:45:20 [INFO]: Query results:
-2025-02-26 22:45:20 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:45:20 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:45:20 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:45:20 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:45:21 [INFO]: Message sent successfully
-2025-02-26 22:45:21 [INFO]: Welcome message sent to 919094995418
-2025-02-26 22:45:21 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 0
-2025-02-26 22:45:21 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:45:21 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":37,"MENU_NAME":"Book Appointment ","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
-2025-02-26 22:45:23 [DEBUG]: Image uploaded successfully:
-2025-02-26 22:45:24 [INFO]: Interactive message sent successfully
-2025-02-26 22:45:24 [INFO]: Main menu sent to 919094995418
-2025-02-26 22:45:24 [INFO]: user Id: 1
-2025-02-26 22:45:27 [INFO]: Message received from: 919094995418, Content: Book Appointment
-2025-02-26 22:45:27 [DEBUG]: Message type: interactive
-2025-02-26 22:45:27 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:45:27 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:45:27 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:45:27 [INFO]: Query results:
-2025-02-26 22:45:27 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:45:27 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:45:27 [INFO]: Title: Book Appointment ID: 2~37~37,2~37~37
-2025-02-26 22:45:27 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:45:27 [DEBUG]: Executing query for Client_ID: 2, User_ID: 1
-2025-02-26 22:45:27 [INFO]: Appointment id: 46
-2025-02-26 22:45:27 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 37
-2025-02-26 22:45:27 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:45:27 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":38,"MENU_NAME":"Fetch Doctor","HEADER_MESSAGE":"Select a Doctor","ACTION":"Appointment_Function~POC~Specialization"}
-2025-02-26 22:45:27 [INFO]: handleAction: iAction:Appointment_Function,POC,Specialization ,iClientID:2 ,iMenuId:38, iUserValue:Book Appointment iSelectId: 37 appointment_id: 46
-2025-02-26 22:45:27 [DEBUG]: Executing query for Appointment_ID: 46, Key: Appointment_Function
-2025-02-26 22:45:27 [INFO]: JSON data updated successfully
-2025-02-26 22:45:27 [INFO]: JSON data updated successfully
-2025-02-26 22:45:27 [INFO]: Appointment updated successfully
-2025-02-26 22:45:27 [DEBUG]: Executing query for Appointment_ID: 46, Key: Department
-2025-02-26 22:45:27 [INFO]: getFromPOC: iClientId:2 , iMenuId:38 ,iKey:null
-2025-02-26 22:45:27 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 38, Specialization: null
-2025-02-26 22:45:27 [INFO]: Query results:
-2025-02-26 22:45:27 [INFO]: Radio button message sent successfully
-2025-02-26 22:45:28 [INFO]: Interactive message sent successfully
-2025-02-26 22:45:28 [INFO]: Back button sent to 919094995418
-2025-02-26 22:45:32 [INFO]: Message received from: 919094995418, Content: Dr. John
-2025-02-26 22:45:32 [DEBUG]: Message type: interactive
-2025-02-26 22:45:32 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:45:32 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:45:32 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:45:32 [INFO]: Query results:
-2025-02-26 22:45:32 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:45:32 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:45:32 [INFO]: Title: Dr. John ID: 2~38~8~46,2~37~37
-2025-02-26 22:45:32 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:45:32 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 38
-2025-02-26 22:45:32 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:45:32 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":39,"MENU_NAME":"Fetch Dates","HEADER_MESSAGE":"Select a date","ACTION":"Poc_name~FETCH_AVAILABLE_DATES_DIRECT"}
-2025-02-26 22:45:32 [INFO]: handleAction: iAction:Poc_name,FETCH_AVAILABLE_DATES_DIRECT ,iClientID:2 ,iMenuId:39, iUserValue:Dr. John iSelectId: 8 appointment_id: 46
-2025-02-26 22:45:32 [DEBUG]: Executing query for Appointment_ID: 46, POC_ID: 8, Poc_name: Dr. John
-2025-02-26 22:45:32 [INFO]: POC ID and JSON data updated successfully
-2025-02-26 22:45:32 [INFO]: Appointment updated successfully
-2025-02-26 22:45:32 [DEBUG]: Executing query for Client_ID: 2, Specialization: 8
-2025-02-26 22:45:32 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 39, POC_ID: 8
-2025-02-26 22:45:33 [INFO]: Radio button message sent successfully
-2025-02-26 22:45:34 [INFO]: Interactive message sent successfully
-2025-02-26 22:45:34 [INFO]: Back button sent to 919094995418
-2025-02-26 22:45:38 [INFO]: Message received from: 919094995418, Content: 2025-02-27
-2025-02-26 22:45:38 [DEBUG]: Message type: interactive
-2025-02-26 22:45:38 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:45:38 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:45:38 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:45:38 [INFO]: Query results:
-2025-02-26 22:45:38 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:45:38 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:45:38 [INFO]: Title: 2025-02-27 ID: 2~39~8-2025-02-27~46,2~38~8
-2025-02-26 22:45:38 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:45:38 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 39
-2025-02-26 22:45:38 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:45:38 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":40,"MENU_NAME":"Fetch Times","HEADER_MESSAGE":"Select a time","ACTION":"Appointment_Date~FETCH_AVAILABLE_TIMES_DIRECT"}
-2025-02-26 22:45:38 [INFO]: handleAction: iAction:Appointment_Date,FETCH_AVAILABLE_TIMES_DIRECT ,iClientID:2 ,iMenuId:40, iUserValue:2025-02-27 iSelectId: 8-2025-02-27 appointment_id: 46
-2025-02-26 22:45:38 [DEBUG]: Executing query for Appointment_ID: 46, Column: Appointment_Date, Value: 2025-02-27
-2025-02-26 22:45:38 [INFO]: Appointment updated successfully
-2025-02-26 22:45:38 [INFO]: Appointment updated successfully
-2025-02-26 22:45:38 [DEBUG]: Executing query for Appointment_ID: 46, Key: Appointment_Date
-2025-02-26 22:45:38 [INFO]: getAvailableTimes: iClientId:2 ,iMenuId: 40, iKey: 8-2025-02-27, iValue: 2025-02-27
-2025-02-26 22:45:38 [DEBUG]: Executing query for Client_ID: 2, Menu_ID: 40, POC_ID: 8-2025-02-27, Schedule_Date: 2025-02-27
-2025-02-26 22:45:39 [INFO]: Radio button message sent successfully
-2025-02-26 22:45:39 [INFO]: Interactive message sent successfully
-2025-02-26 22:45:39 [INFO]: Back button sent to 919094995418
-2025-02-26 22:45:44 [INFO]: Message received from: 919094995418, Content: 10:00:00
-2025-02-26 22:45:44 [DEBUG]: Message type: interactive
-2025-02-26 22:45:44 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:45:44 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:45:44 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:45:44 [INFO]: Query results:
-2025-02-26 22:45:44 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:45:44 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:45:44 [INFO]: Title: 10:00:00 ID: 2~40~8-2025-02-27-10:00:00~46,2~39~8-2025-02-27
-2025-02-26 22:45:44 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:45:44 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 40
-2025-02-26 22:45:44 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:45:44 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":41,"MENU_NAME":"Confirm","HEADER_MESSAGE":"Please confirm your details","ACTION":"Appointment_Time~CONFIRM~CONFIRM"}
-2025-02-26 22:45:44 [INFO]: handleAction: iAction:Appointment_Time,CONFIRM,CONFIRM ,iClientID:2 ,iMenuId:41, iUserValue:10:00:00 iSelectId: 8-2025-02-27-10:00:00 appointment_id: 46
-2025-02-26 22:45:44 [DEBUG]: Executing query for Appointment_ID: 46, Column: Appointment_Time, Value: 10:00:00
-2025-02-26 22:45:44 [INFO]: Appointment updated successfully
-2025-02-26 22:45:44 [INFO]: Appointment updated successfully
-2025-02-26 22:45:44 [DEBUG]: Executing query for Client_ID: 2, Template_Name: CONFIRM
-2025-02-26 22:45:44 [DEBUG]: Executing query for Appointment_ID: 46
-2025-02-26 22:45:44 [INFO]: JSON Data: {
-  "Poc_ID": "8",
-  "Poc_name": "Dr. John",
-  "Appointment_Date": "2025-02-27",
-  "Appointment_Time": "10:00:00",
-  "Appointment_Function": "Book Appointment"
-}
-2025-02-26 22:45:45 [INFO]: Message sent successfully
-2025-02-26 22:45:45 [INFO]: Radio button message sent successfully
-2025-02-26 22:45:46 [INFO]: Interactive message sent successfully
-2025-02-26 22:45:46 [INFO]: Back button sent to 919094995418
-2025-02-26 22:45:51 [INFO]: Message received from: 919094995418, Content: Confirm
-2025-02-26 22:45:51 [DEBUG]: Message type: interactive
-2025-02-26 22:45:51 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:45:51 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:45:51 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:45:51 [INFO]: Query results:
-2025-02-26 22:45:51 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:45:51 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:45:51 [INFO]: Title: Confirm ID: 2~41~Confirm~46,2~40~8-2025-02-27-10:00:00
-2025-02-26 22:45:51 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:45:51 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 41
-2025-02-26 22:45:51 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:45:51 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":42,"MENU_NAME":"Make Payment for Direct","HEADER_MESSAGE":"Please make a payment to confirm your Direct appointment","ACTION":"Confirm_Status~PAYMENT~PAYMENT_DIRECT"}
-2025-02-26 22:45:51 [INFO]: handleAction: iAction:Confirm_Status,PAYMENT,PAYMENT_DIRECT ,iClientID:2 ,iMenuId:42, iUserValue:Confirm iSelectId: Confirm appointment_id: 46
-2025-02-26 22:45:51 [DEBUG]: Executing query for Appointment_ID: 46, Key: Confirm_Status
-2025-02-26 22:45:51 [INFO]: JSON data updated successfully
-2025-02-26 22:45:51 [INFO]: JSON data updated successfully
-2025-02-26 22:45:51 [INFO]: Appointment updated successfully
-2025-02-26 22:45:53 [INFO]: Message sent successfully
-2025-02-26 22:45:53 [DEBUG]: Executing query for Client_ID: 2, Template_Name: PAYMENT
-2025-02-26 22:45:53 [INFO]: Message sent successfully
-2025-02-26 22:45:54 [INFO]: Message sent successfully
-2025-02-26 22:45:54 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 42
-2025-02-26 22:45:54 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:45:54 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":43,"MENU_NAME":"Finalize Direct Appointment","HEADER_MESSAGE":"Please choose finalize to finalize your appointment","ACTION":"Finalize_Status~FINALIZE~FINALIZE"}
-2025-02-26 22:45:54 [INFO]: Interactive message sent successfully
-2025-02-26 22:46:02 [INFO]: Message received from: 919094995418, Content: Finalize
-2025-02-26 22:46:02 [DEBUG]: Message type: interactive
-2025-02-26 22:46:02 [INFO]: Fetching Client ID for displayPhoneNumber: "15551834745"
-2025-02-26 22:46:02 [INFO]: getFromPOC: from:919094995418
-2025-02-26 22:46:02 [DEBUG]: Executing query for Client_ID: 2, Contact_Number: 919094995418
-2025-02-26 22:46:02 [INFO]: Query results:
-2025-02-26 22:46:02 [INFO]: Handling user view for: 919094995418
-2025-02-26 22:46:02 [DEBUG]: Executing query for User_Contact: 919094995418
-2025-02-26 22:46:02 [INFO]: Title: Finalize ID: 2~42~Finalize*plink_Q0PywiBKZAyyJB~46,2~42~Confirm
-2025-02-26 22:46:02 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:46:02 [DEBUG]: Executing query for Client_ID: 2, Parent_Menu_ID: 42
-2025-02-26 22:46:02 [INFO]: Query executed successfully. 1 row(s) returned.
-2025-02-26 22:46:02 [DEBUG]: Row 1: {"CLIENT_ID":2,"MENU_ID":43,"MENU_NAME":"Finalize Direct Appointment","HEADER_MESSAGE":"Please choose finalize to finalize your appointment","ACTION":"Finalize_Status~FINALIZE~FINALIZE"}
-2025-02-26 22:46:02 [INFO]: handleAction: iAction:Finalize_Status,FINALIZE,FINALIZE ,iClientID:2 ,iMenuId:43, iUserValue:Finalize iSelectId: Finalize*plink_Q0PywiBKZAyyJB appointment_id: 46
-2025-02-26 22:46:02 [DEBUG]: Executing query for Appointment_ID: 46, Key: Finalize_Status
-2025-02-26 22:46:02 [INFO]: JSON data updated successfully
-2025-02-26 22:46:02 [INFO]: JSON data updated successfully
-2025-02-26 22:46:02 [INFO]: Appointment updated successfully
-2025-02-26 22:46:02 [DEBUG]: Executing query for Appointment_ID: 46, Column: Payment_Status, Value: Pay_later
-2025-02-26 22:46:02 [INFO]: Appointment updated successfully
-2025-02-26 22:46:02 [DEBUG]: Executing query for Appointment_ID: 46, Column: Status, Value: Confirmed
-2025-02-26 22:46:02 [INFO]: Appointment updated successfully
-2025-02-26 22:46:02 [DEBUG]: Executing query for Appointment_ID: 46, Column: Is_Active, Value: 1
-2025-02-26 22:46:02 [INFO]: Appointment updated successfully
-2025-02-26 22:46:02 [DEBUG]: Executing query for Appointment_ID: 46
-2025-02-26 22:46:02 [INFO]: JSON Data: {
-  "Poc_ID": "8",
+2025-03-08 19:13:21 [INFO]: Message sent successfully
+2025-03-08 19:13:22 [INFO]: Radio button message sent successfully
+2025-03-08 19:13:22 [INFO]: Interactive message sent successfully
+2025-03-08 19:13:22 [INFO]: Back button sent to 919094995418
+2025-03-08 19:13:35 [INFO]: Message details:
+2025-03-08 19:13:35 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:13:35 [INFO]: Fetched client ID:
+2025-03-08 19:13:35 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:13:35 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:13:35 [INFO]: Query results:
+2025-03-08 19:13:35 [INFO]: Fetched POC details:
+2025-03-08 19:13:35 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:13:35 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:13:35 [INFO]: Title: Confirm ID: 1~20~Confirm~63,1~19~1-2025-03-10-10:00:00
+2025-03-08 19:13:35 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:13:35 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 20
+2025-03-08 19:13:35 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:13:35 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":21,"MENU_NAME":"Make Payment for Direct","HEADER_MESSAGE":"Please make a payment to confirm your Direct appointment","ACTION":"Confirm_Status~PAYMENT~PAYMENT_DIRECT"}
+2025-03-08 19:13:35 [INFO]: handleAction: iAction:Confirm_Status,PAYMENT,PAYMENT_DIRECT ,iClientID:1 ,iMenuId:21, iUserValue:Confirm iSelectId: Confirm appointment_id: 63
+2025-03-08 19:13:35 [DEBUG]: Executing query for Appointment_ID: 63, Key: Confirm_Status
+2025-03-08 19:13:35 [INFO]: JSON data updated successfully
+2025-03-08 19:13:35 [INFO]: JSON data updated successfully
+2025-03-08 19:13:35 [INFO]: Appointment updated successfully
+2025-03-08 19:13:36 [INFO]: Message sent successfully
+2025-03-08 19:13:36 [DEBUG]: Executing query for Client_ID: 1, Template_Name: PAYMENT
+2025-03-08 19:13:37 [INFO]: Message sent successfully
+2025-03-08 19:13:38 [INFO]: Message sent successfully
+2025-03-08 19:13:38 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 21
+2025-03-08 19:13:38 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:13:38 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":22,"MENU_NAME":"Finalize Direct Appointment","HEADER_MESSAGE":"Please choose finalize to finalize your appointment","ACTION":"Finalize_Status~FINALIZE~FINALIZE_DIRECT"}
+2025-03-08 19:13:38 [INFO]: Interactive message sent successfully
+2025-03-08 19:13:42 [INFO]: Message details:
+2025-03-08 19:13:42 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:13:42 [INFO]: Fetched client ID:
+2025-03-08 19:13:42 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:13:42 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:13:42 [INFO]: Query results:
+2025-03-08 19:13:42 [INFO]: Fetched POC details:
+2025-03-08 19:13:42 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:13:42 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:13:42 [INFO]: Title: Finalize ID: 1~21~Finalize*plink_Q4JhuwPKdMt7vt~63,1~21~Confirm
+2025-03-08 19:13:42 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:13:42 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 21
+2025-03-08 19:13:42 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:13:42 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":22,"MENU_NAME":"Finalize Direct Appointment","HEADER_MESSAGE":"Please choose finalize to finalize your appointment","ACTION":"Finalize_Status~FINALIZE~FINALIZE_DIRECT"}
+2025-03-08 19:13:42 [INFO]: handleAction: iAction:Finalize_Status,FINALIZE,FINALIZE_DIRECT ,iClientID:1 ,iMenuId:22, iUserValue:Finalize iSelectId: Finalize*plink_Q4JhuwPKdMt7vt appointment_id: 63
+2025-03-08 19:13:42 [DEBUG]: Executing query for Appointment_ID: 63, Key: Finalize_Status
+2025-03-08 19:13:42 [INFO]: JSON data updated successfully
+2025-03-08 19:13:42 [INFO]: JSON data updated successfully
+2025-03-08 19:13:42 [INFO]: Appointment updated successfully
+2025-03-08 19:13:42 [DEBUG]: Executing query for Appointment_ID: 63, Column: Payment_Status, Value: Pay_later
+2025-03-08 19:13:42 [INFO]: Appointment updated successfully
+2025-03-08 19:13:42 [DEBUG]: Executing query for Appointment_ID: 63, Column: Status, Value: Confirmed
+2025-03-08 19:13:42 [INFO]: Appointment updated successfully
+2025-03-08 19:13:42 [DEBUG]: Executing query for Appointment_ID: 63, Column: Is_Active, Value: 1
+2025-03-08 19:13:42 [INFO]: Appointment updated successfully
+2025-03-08 19:13:42 [DEBUG]: Executing query for Appointment_ID: 63
+2025-03-08 19:13:42 [INFO]: JSON Data: {
+  "Poc_ID": "1",
   "Status": "Confirmed",
-  "Poc_name": "Dr. John",
+  "Poc_name": "Dr. Harry Smith",
   "Is_Active": 1,
+  "Department": "Cardiology",
   "Confirm_Status": "Confirm",
   "Payment_Status": "Pay_later",
   "Finalize_Status": "Finalize",
-  "Appointment_Date": "2025-02-27",
+  "Appointment_Date": "2025-03-10",
   "Appointment_Time": "10:00:00",
-  "Appointment_Function": "Book Appointment"
+  "Appointment_Type": "Direct Consultation"
 }
-2025-02-26 22:46:02 [INFO]: updateAvailableSlots: {
-  "Poc_ID": "8",
+2025-03-08 19:13:42 [INFO]: updateAvailableSlots: {
+  "Poc_ID": "1",
   "Status": "Confirmed",
-  "Poc_name": "Dr. John",
+  "Poc_name": "Dr. Harry Smith",
   "Is_Active": 1,
+  "Department": "Cardiology",
   "Confirm_Status": "Confirm",
   "Payment_Status": "Pay_later",
   "Finalize_Status": "Finalize",
-  "Appointment_Date": "2025-02-27",
+  "Appointment_Date": "2025-03-10",
   "Appointment_Time": "10:00:00",
-  "Appointment_Function": "Book Appointment"
+  "Appointment_Type": "Direct Consultation"
 }
-2025-02-26 22:46:02 [DEBUG]: Executing query for POC_ID: 8, Schedule_Date: 2025-02-27, Start_Time: 10:00:00
-2025-02-26 22:46:02 [DEBUG]: Executing query for Client_ID: 2
-2025-02-26 22:46:02 [DEBUG]: Executing query for Appointment_ID: 46
-2025-02-26 22:46:02 [INFO]: [object Object]
-2025-02-26 22:46:02 [DEBUG]: Executing query for Client_ID: 2, Template_Name: FINALIZE
-2025-02-26 22:46:02 [DEBUG]: Executing query for POC_ID: 8
-2025-02-26 22:46:02 [INFO]: Message sent successfully
-2025-02-26 22:46:02 [DEBUG]: Executing query for Appointment_ID: 46
-2025-02-26 22:46:02 [INFO]: Appointment confirmed successfully
+2025-03-08 19:13:42 [DEBUG]: Executing query for POC_ID: 1, Schedule_Date: 2025-03-10, Start_Time: 10:00:00
+2025-03-08 19:13:42 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:13:42 [DEBUG]: Executing query for Appointment_ID: 63
+2025-03-08 19:13:42 [INFO]: [object Object]
+2025-03-08 19:13:42 [DEBUG]: Executing query for Client_ID: 1, Template_Name: FINALIZE_DIRECT
+2025-03-08 19:13:42 [DEBUG]: Executing query for POC_ID: 1
+2025-03-08 19:13:43 [INFO]: Message sent successfully
+2025-03-08 19:13:43 [DEBUG]: Executing query for Appointment_ID: 63
+2025-03-08 19:13:43 [DEBUG]: Executing query for Client_ID: 1, Template_Name: APPOINTMENT_CONFIRMATION_DIRECT
+2025-03-08 19:13:43 [DEBUG]: Executing query for POC_ID: 1
+2025-03-08 19:13:43 [DEBUG]: Executing query for Appointment_ID: 63
+2025-03-08 19:13:43 [DEBUG]: Executing query for POC_ID: 1
+2025-03-08 19:13:44 [INFO]: Message sent successfully
+2025-03-08 19:13:44 [INFO]: Appointment confirmed successfully
+2025-03-08 19:13:53 [INFO]: Message details:
+2025-03-08 19:13:53 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:13:53 [INFO]: Fetched client ID:
+2025-03-08 19:13:53 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:13:53 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:13:53 [INFO]: Query results:
+2025-03-08 19:13:53 [INFO]: Fetched POC details:
+2025-03-08 19:13:53 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:13:53 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:13:53 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:13:53 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:13:54 [INFO]: Message sent successfully
+2025-03-08 19:13:54 [INFO]: Welcome message sent to 919094995418
+2025-03-08 19:13:54 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 0
+2025-03-08 19:13:54 [INFO]: Query executed successfully. 3 row(s) returned.
+2025-03-08 19:13:54 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":1,"MENU_NAME":"Book Appointment","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
+2025-03-08 19:13:54 [DEBUG]: Row 2: {"CLIENT_ID":1,"MENU_ID":2,"MENU_NAME":"Reschedule","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:13:54 [DEBUG]: Row 3: {"CLIENT_ID":1,"MENU_ID":3,"MENU_NAME":"Cancel Appointment","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:13:56 [DEBUG]: Image uploaded successfully:
+2025-03-08 19:13:58 [INFO]: Interactive message sent successfully
+2025-03-08 19:13:58 [INFO]: Main menu sent to 919094995418
+2025-03-08 19:13:58 [INFO]: user Id: 1
+2025-03-08 19:14:02 [INFO]: Message details:
+2025-03-08 19:14:02 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:02 [INFO]: Fetched client ID:
+2025-03-08 19:14:02 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:14:02 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:14:02 [INFO]: Query results:
+2025-03-08 19:14:02 [INFO]: Fetched POC details:
+2025-03-08 19:14:02 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:14:02 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:14:02 [INFO]: Title: Reschedule ID: 1~2~2,1~2~2
+2025-03-08 19:14:02 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:14:02 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 2
+2025-03-08 19:14:02 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:14:02 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":32,"MENU_NAME":"Fetch Appointment Details","HEADER_MESSAGE":"Reschedule your appointment","ACTION":"Appointment_Function~FETCH_APPOINTMENT_DETAILS_RESCHEDULE"}
+2025-03-08 19:14:02 [INFO]: handleAction: iAction:Appointment_Function,FETCH_APPOINTMENT_DETAILS_RESCHEDULE ,iClientID:1 ,iMenuId:32, iUserValue:Reschedule iSelectId: 2 appointment_id: undefined
+2025-03-08 19:14:02 [DEBUG]: Executing query for User_ID: 1
+2025-03-08 19:14:02 [INFO]: [object Object],[object Object]
+2025-03-08 19:14:02 [INFO]: [object Object],[object Object]
+2025-03-08 19:14:02 [INFO]: Interactive message sent successfully
+2025-03-08 19:14:03 [INFO]: Interactive message sent successfully
+2025-03-08 19:14:06 [INFO]: Message details:
+2025-03-08 19:14:06 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:06 [INFO]: Fetched client ID:
+2025-03-08 19:14:06 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:14:06 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:14:06 [INFO]: Query results:
+2025-03-08 19:14:06 [INFO]: Fetched POC details:
+2025-03-08 19:14:06 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:14:06 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:14:06 [INFO]: Title: Reschedule ID: 1~32~Reschedule~60,1~32~2
+2025-03-08 19:14:06 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:14:06 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 32
+2025-03-08 19:14:06 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:14:06 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":33,"MENU_NAME":"Fetch available Dates","HEADER_MESSAGE":"Select a new date","ACTION":"Confirm_Status~RESCHEDULE_DATE"}
+2025-03-08 19:14:06 [INFO]: handleAction: iAction:Confirm_Status,RESCHEDULE_DATE ,iClientID:1 ,iMenuId:33, iUserValue:Reschedule iSelectId: Reschedule appointment_id: 60
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 60
+2025-03-08 19:14:06 [INFO]: [object Object]
+2025-03-08 19:14:06 [INFO]: [object Object]
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 60
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 60, Column: Is_Active, Value: 0
+2025-03-08 19:14:06 [INFO]: Appointment updated successfully
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 60, Column: Status, Value: Rescheduled
+2025-03-08 19:14:06 [INFO]: Appointment updated successfully
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 60
+2025-03-08 19:14:06 [DEBUG]: Executing query for Client_ID: 1, Template_Name: APPOINTMENT_RESCHEDULE
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 60, Key: Poc_ID
+2025-03-08 19:14:06 [DEBUG]: Executing query for POC_ID: 1
+2025-03-08 19:14:06 [INFO]: Message sent successfully
+2025-03-08 19:14:06 [INFO]: increaseAvailableSlots: {
+  "Poc_ID": "1",
+  "Status": "Confirmed",
+  "Poc_name": "Dr. Harry Smith",
+  "Is_Active": 1,
+  "Department": "Cardiology",
+  "Confirm_Status": "Confirm",
+  "Payment_Status": "Pay_later",
+  "Finalize_Status": "Finalize",
+  "Appointment_Date": "2025-03-10",
+  "Appointment_Time": "10:00:00",
+  "Appointment_Type": "Direct Consultation"
+}
+2025-03-08 19:14:06 [DEBUG]: Executing query for POC_ID: 1, Schedule_Date: 2025-03-10, Start_Time: 10:00:00
+2025-03-08 19:14:06 [DEBUG]: Executing query for Client_ID: 1, User_ID: 1
+2025-03-08 19:14:06 [INFO]: New Appointment id : 64
+2025-03-08 19:14:06 [INFO]: Appointment Type: Direct Consultation POC_ID: '1
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 64, Column: Appointment_Type, Value: Direct Consultation
+2025-03-08 19:14:06 [INFO]: Appointment updated successfully
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 64, Key: Appointment_Type
+2025-03-08 19:14:06 [INFO]: JSON data updated successfully
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 64, Column: POC_ID, Value: 1
+2025-03-08 19:14:06 [INFO]: Appointment updated successfully
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 64, Key: Poc_ID
+2025-03-08 19:14:06 [INFO]: JSON data updated successfully
+2025-03-08 19:14:06 [DEBUG]: Executing query for Appointment_ID: 64, Key: Poc_ID
+2025-03-08 19:14:06 [DEBUG]: Executing query for Client_ID: 1, Specialization: 1
+2025-03-08 19:14:06 [DEBUG]: Executing query for Client_ID: 1, Menu_ID: 33, POC_ID: 1
+2025-03-08 19:14:07 [INFO]: Radio button message sent successfully
+2025-03-08 19:14:14 [INFO]: Message details:
+2025-03-08 19:14:14 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:14 [INFO]: Fetched client ID:
+2025-03-08 19:14:14 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:14:14 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:14:14 [INFO]: Query results:
+2025-03-08 19:14:14 [INFO]: Fetched POC details:
+2025-03-08 19:14:14 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:14:14 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:14:14 [INFO]: Title: 2025-03-12 ID: 1~33~1-2025-03-12~64,1~33~Reschedule
+2025-03-08 19:14:14 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:14:14 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 33
+2025-03-08 19:14:14 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:14:14 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":34,"MENU_NAME":"Fetch available Time","HEADER_MESSAGE":"Select a time","ACTION":"Appointment_Date~FETCH_AVAILABLE_TIMES_DIRECT"}
+2025-03-08 19:14:14 [INFO]: handleAction: iAction:Appointment_Date,FETCH_AVAILABLE_TIMES_DIRECT ,iClientID:1 ,iMenuId:34, iUserValue:2025-03-12 iSelectId: 1-2025-03-12 appointment_id: 64
+2025-03-08 19:14:14 [DEBUG]: Executing query for Appointment_ID: 64, Column: Appointment_Date, Value: 2025-03-12
+2025-03-08 19:14:14 [INFO]: Appointment updated successfully
+2025-03-08 19:14:14 [INFO]: Appointment updated successfully
+2025-03-08 19:14:14 [DEBUG]: Executing query for Appointment_ID: 64, Key: Appointment_Date
+2025-03-08 19:14:14 [INFO]: getAvailableTimes: iClientId:1 ,iMenuId: 34, iKey: 1-2025-03-12, iValue: 2025-03-12
+2025-03-08 19:14:14 [DEBUG]: Executing query for Client_ID: 1, Menu_ID: 34, POC_ID: 1-2025-03-12, Schedule_Date: 2025-03-12
+2025-03-08 19:14:15 [INFO]: Radio button message sent successfully
+2025-03-08 19:14:16 [INFO]: Interactive message sent successfully
+2025-03-08 19:14:16 [INFO]: Back button sent to 919094995418
+2025-03-08 19:14:29 [INFO]: Message details:
+2025-03-08 19:14:29 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:29 [INFO]: Fetched client ID:
+2025-03-08 19:14:29 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:14:29 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:14:29 [INFO]: Query results:
+2025-03-08 19:14:29 [INFO]: Fetched POC details:
+2025-03-08 19:14:29 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:14:29 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:14:29 [INFO]: Title: 10:00:00 ID: 1~34~1-2025-03-12-10:00:00~64,1~33~1-2025-03-12
+2025-03-08 19:14:29 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:14:29 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 34
+2025-03-08 19:14:29 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:14:29 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":35,"MENU_NAME":"Confirm Reschedule","HEADER_MESSAGE":"Reschedule your appointment","ACTION":"Appointment_Time~CONFIRM_RESCHEDULE"}
+2025-03-08 19:14:29 [INFO]: handleAction: iAction:Appointment_Time,CONFIRM_RESCHEDULE ,iClientID:1 ,iMenuId:35, iUserValue:10:00:00 iSelectId: 1-2025-03-12-10:00:00 appointment_id: 64
+2025-03-08 19:14:29 [DEBUG]: Executing query for Appointment_ID: 64, Column: Appointment_Time, Value: 10:00:00
+2025-03-08 19:14:29 [INFO]: Appointment updated successfully
+2025-03-08 19:14:29 [INFO]: Appointment updated successfully
+2025-03-08 19:14:29 [DEBUG]: Executing query for Appointment_ID: 64, Key: Appointment_Date
+2025-03-08 19:14:29 [DEBUG]: Executing query for Appointment_ID: 64, Column: Appointment_Date, Value: 2025-03-12
+2025-03-08 19:14:29 [INFO]: Appointment updated successfully
+2025-03-08 19:14:29 [DEBUG]: Executing query for Appointment_ID: 64, Key: Appointment_Time
+2025-03-08 19:14:29 [DEBUG]: Executing query for Appointment_ID: 64, Column: Appointment_Time, Value: 10:00:00
+2025-03-08 19:14:29 [INFO]: Appointment updated successfully
+2025-03-08 19:14:29 [DEBUG]: Executing query for Client_ID: 1, Template_Name: CONFIRM_RESCHEDULE
+2025-03-08 19:14:29 [DEBUG]: Executing query for Appointment_ID: 64
+2025-03-08 19:14:30 [INFO]: Message sent successfully
+2025-03-08 19:14:30 [INFO]: Radio button message sent successfully
+2025-03-08 19:14:31 [INFO]: Interactive message sent successfully
+2025-03-08 19:14:31 [INFO]: Back button sent to 919094995418
+2025-03-08 19:14:35 [INFO]: Message details:
+2025-03-08 19:14:35 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:35 [INFO]: Fetched client ID:
+2025-03-08 19:14:35 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:14:35 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:14:35 [INFO]: Query results:
+2025-03-08 19:14:35 [INFO]: Fetched POC details:
+2025-03-08 19:14:35 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:14:35 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:14:35 [INFO]: Title: Confirm ID: 1~35~Confirm~64,1~34~1-2025-03-12-10:00:00
+2025-03-08 19:14:35 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:14:35 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 35
+2025-03-08 19:14:35 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:14:35 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":36,"MENU_NAME":"Finalize Reschedule","HEADER_MESSAGE":"Appointment Rescheduled","ACTION":"Confirm_Status~FINALIZE_RESCHEDULE"}
+2025-03-08 19:14:35 [INFO]: handleAction: iAction:Confirm_Status,FINALIZE_RESCHEDULE ,iClientID:1 ,iMenuId:36, iUserValue:Confirm iSelectId: Confirm appointment_id: 64
+2025-03-08 19:14:35 [DEBUG]: Executing query for Appointment_ID: 64, Key: Confirm_Status
+2025-03-08 19:14:35 [INFO]: JSON data updated successfully
+2025-03-08 19:14:35 [INFO]: JSON data updated successfully
+2025-03-08 19:14:35 [INFO]: Appointment updated successfully
+2025-03-08 19:14:35 [DEBUG]: Executing query for Appointment_ID: 64, Column: Status, Value: Confirmed
+2025-03-08 19:14:35 [INFO]: Appointment updated successfully
+2025-03-08 19:14:35 [DEBUG]: Executing query for Appointment_ID: 64, Column: Is_Active, Value: 1
+2025-03-08 19:14:35 [INFO]: Appointment updated successfully
+2025-03-08 19:14:35 [DEBUG]: Executing query for Appointment_ID: 64
+2025-03-08 19:14:35 [INFO]: updateAvailableSlots: {
+  "POC_ID": 1,
+  "Poc_ID": 1,
+  "Status": "Confirmed",
+  "Is_Active": 1,
+  "Confirm_Status": "Confirm",
+  "Appointment_Date": "2025-03-12",
+  "Appointment_Time": "10:00:00",
+  "Appointment_Type": "Direct Consultation"
+}
+2025-03-08 19:14:35 [DEBUG]: Executing query for POC_ID: 1, Schedule_Date: 2025-03-12, Start_Time: 10:00:00
+2025-03-08 19:14:35 [DEBUG]: Executing query for Client_ID: 1, Template_Name: FINALIZE_RESCHEDULE
+2025-03-08 19:14:36 [INFO]: Message sent successfully
+2025-03-08 19:14:36 [INFO]: Appointment rescheduled successfully
+2025-03-08 19:14:37 [INFO]: Message sent successfully
+2025-03-08 19:14:49 [INFO]: Message details:
+2025-03-08 19:14:49 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:49 [INFO]: Fetched client ID:
+2025-03-08 19:14:49 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:14:49 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:14:49 [INFO]: Query results:
+2025-03-08 19:14:49 [INFO]: Fetched POC details:
+2025-03-08 19:14:49 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:14:49 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:49 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:14:49 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:14:49 [INFO]: Message sent successfully
+2025-03-08 19:14:49 [INFO]: Welcome message sent to 919094995418
+2025-03-08 19:14:49 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 0
+2025-03-08 19:14:49 [INFO]: Query executed successfully. 3 row(s) returned.
+2025-03-08 19:14:49 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":1,"MENU_NAME":"Book Appointment","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
+2025-03-08 19:14:49 [DEBUG]: Row 2: {"CLIENT_ID":1,"MENU_ID":2,"MENU_NAME":"Reschedule","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:14:49 [DEBUG]: Row 3: {"CLIENT_ID":1,"MENU_ID":3,"MENU_NAME":"Cancel Appointment","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 19:14:51 [DEBUG]: Image uploaded successfully:
+2025-03-08 19:14:52 [INFO]: Interactive message sent successfully
+2025-03-08 19:14:52 [INFO]: Main menu sent to 919094995418
+2025-03-08 19:14:52 [INFO]: user Id: 1
+2025-03-08 19:14:58 [INFO]: Message details:
+2025-03-08 19:14:58 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:14:58 [INFO]: Fetched client ID:
+2025-03-08 19:14:58 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:14:58 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:14:58 [INFO]: Query results:
+2025-03-08 19:14:58 [INFO]: Fetched POC details:
+2025-03-08 19:14:58 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:14:58 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:14:58 [INFO]: Title: Cancel Appointment ID: 1~3~3,1~3~3
+2025-03-08 19:14:58 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:14:58 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 3
+2025-03-08 19:14:58 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:14:58 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":30,"MENU_NAME":"Confirm Cancel","HEADER_MESSAGE":"Cancel your appointment","ACTION":"Appointment_Function~FETCH_APPOINTMENT_DETAILS"}
+2025-03-08 19:14:58 [INFO]: handleAction: iAction:Appointment_Function,FETCH_APPOINTMENT_DETAILS ,iClientID:1 ,iMenuId:30, iUserValue:Cancel Appointment iSelectId: 3 appointment_id: undefined
+2025-03-08 19:14:58 [DEBUG]: Executing query for User_ID: 1
+2025-03-08 19:14:58 [INFO]: [object Object],[object Object]
+2025-03-08 19:14:58 [INFO]: [object Object],[object Object]
+2025-03-08 19:14:59 [INFO]: Interactive message sent successfully
+2025-03-08 19:14:59 [INFO]: Interactive message sent successfully
+2025-03-08 19:15:09 [INFO]: Message details:
+2025-03-08 19:15:09 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 19:15:09 [INFO]: Fetched client ID:
+2025-03-08 19:15:09 [INFO]: getFromPOC: from:919094995418
+2025-03-08 19:15:09 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 19:15:09 [INFO]: Query results:
+2025-03-08 19:15:09 [INFO]: Fetched POC details:
+2025-03-08 19:15:09 [INFO]: Handling user view for: 919094995418
+2025-03-08 19:15:09 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 19:15:09 [INFO]: Title: Cancel ID: 1~30~Cancel~64,1~30~3
+2025-03-08 19:15:09 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 19:15:09 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 30
+2025-03-08 19:15:09 [INFO]: Query executed successfully. 1 row(s) returned.
+2025-03-08 19:15:09 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":31,"MENU_NAME":"Finalize Cancel","HEADER_MESSAGE":"Appointment Cancelled","ACTION":"Confirm_Status~FINALIZE_CANCEL"}
+2025-03-08 19:15:09 [INFO]: handleAction: iAction:Confirm_Status,FINALIZE_CANCEL ,iClientID:1 ,iMenuId:31, iUserValue:Cancel iSelectId: Cancel appointment_id: 64
+2025-03-08 19:15:09 [DEBUG]: Executing query for Appointment_ID: 64, Key: Confirm_Status
+2025-03-08 19:15:09 [INFO]: JSON data updated successfully
+2025-03-08 19:15:09 [INFO]: JSON data updated successfully
+2025-03-08 19:15:09 [INFO]: Appointment updated successfully
+2025-03-08 19:15:09 [DEBUG]: Executing query for Appointment_ID: 64, Column: Status, Value: Cancelled
+2025-03-08 19:15:09 [INFO]: Appointment updated successfully
+2025-03-08 19:15:09 [DEBUG]: Executing query for Appointment_ID: 64, Column: Is_Active, Value: 0
+2025-03-08 19:15:09 [INFO]: Appointment updated successfully
+2025-03-08 19:15:09 [DEBUG]: Executing query for Appointment_ID: 64
+2025-03-08 19:15:09 [INFO]: [object Object]
+2025-03-08 19:15:09 [DEBUG]: Executing query for Appointment_ID: 64
+2025-03-08 19:15:09 [INFO]:  1  2025-03-12 10:00:00
+2025-03-08 19:15:09 [INFO]: increaseAvailableSlots: {
+  "POC_ID": 1,
+  "Poc_ID": 1,
+  "Status": "Cancelled",
+  "Is_Active": 0,
+  "Confirm_Status": "Cancel",
+  "Appointment_Date": "2025-03-12",
+  "Appointment_Time": "10:00:00",
+  "Appointment_Type": "Direct Consultation"
+}
+2025-03-08 19:15:09 [DEBUG]: Executing query for POC_ID: 1, Schedule_Date: 2025-03-12, Start_Time: 10:00:00
+2025-03-08 19:15:09 [DEBUG]: Executing query for Appointment_ID: 64
+2025-03-08 19:15:09 [DEBUG]: Executing query for Client_ID: 1, Template_Name: APPOINTMENT_CANCELLATION
+2025-03-08 19:15:09 [DEBUG]: Executing query for POC_ID: 1
+2025-03-08 19:15:10 [INFO]: Message sent successfully
+2025-03-08 19:15:10 [INFO]: Message sent successfully
+2025-03-08 19:15:10 [INFO]: Appointment cancelled successfully
+2025-03-08 19:15:11 [INFO]: Message sent successfully
+2025-03-08 20:09:14 [INFO]: Message details:
+2025-03-08 20:09:14 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 20:09:14 [INFO]: Fetched client ID:
+2025-03-08 20:09:14 [INFO]: getFromPOC: from:919094995418
+2025-03-08 20:09:14 [DEBUG]: Executing query for Client_ID: 1, Contact_Number: 919094995418
+2025-03-08 20:09:14 [INFO]: Query results:
+2025-03-08 20:09:14 [INFO]: Fetched POC details:
+2025-03-08 20:09:14 [INFO]: Handling user view for: 919094995418
+2025-03-08 20:09:14 [INFO]: Fetching Client ID for displayPhoneNumber: "15551557509"
+2025-03-08 20:09:14 [DEBUG]: Executing query for User_Contact: 919094995418
+2025-03-08 20:09:14 [DEBUG]: Executing query for Client_ID: 1
+2025-03-08 20:09:15 [INFO]: Message sent successfully
+2025-03-08 20:09:15 [INFO]: Welcome message sent to 919094995418
+2025-03-08 20:09:15 [DEBUG]: Executing query for Client_ID: 1, Parent_Menu_ID: 0
+2025-03-08 20:09:15 [INFO]: Query executed successfully. 3 row(s) returned.
+2025-03-08 20:09:15 [DEBUG]: Row 1: {"CLIENT_ID":1,"MENU_ID":1,"MENU_NAME":"Book Appointment","HEADER_MESSAGE":"*How can I help you?*","ACTION":null}
+2025-03-08 20:09:15 [DEBUG]: Row 2: {"CLIENT_ID":1,"MENU_ID":2,"MENU_NAME":"Reschedule","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 20:09:15 [DEBUG]: Row 3: {"CLIENT_ID":1,"MENU_ID":3,"MENU_NAME":"Cancel Appointment","HEADER_MESSAGE":null,"ACTION":null}
+2025-03-08 20:09:17 [DEBUG]: Image uploaded successfully:
+2025-03-08 20:09:18 [INFO]: Interactive message sent successfully
+2025-03-08 20:09:18 [INFO]: Main menu sent to 919094995418
+2025-03-08 20:09:18 [INFO]: user Id: 1

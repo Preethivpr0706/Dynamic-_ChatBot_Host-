@@ -160,6 +160,7 @@ async function sendRadioButtonMessage(to, headerText, options) {
         await axios.post(url, data, { headers });
         logger.info('Radio button message sent successfully'); // Log at the info level  
     } catch (error) {
+        console.log(error);
         logger.error('Error sending radio button message:', error.response ? error.response.data : error.message); // Log at the error level  
     }
 }

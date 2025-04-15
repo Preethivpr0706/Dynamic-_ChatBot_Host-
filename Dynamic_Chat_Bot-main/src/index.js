@@ -18,7 +18,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 9000;
 
 app.use(express.json());
 
@@ -43,30 +43,39 @@ app.get("/webhook", (req, res) => {
 });
 
 app.post("/webhook", async(req, res) => {
+    console.log("Incoming webhook payload" + JSON.stringify(req.body));
+    //logger.info("Incoming webhook payload:", JSON.stringify(req.body, null, 2));
+
     if (!req.body || Object.keys(req.body).length === 0) {
         logger.error("Empty webhook payload received.");
-        return res.status(204).send(); // Send a 204 status code   
+        return res.status(204).send();
     }
 
     try {
         const webhookData = await parseWebhookData(req.body);
+        // logger.info("Parsed webhook data:", webhookData);
 
-        if (!webhookData || !webhookData.from || !webhookData.messageBody || !webhookData.messageType || !webhookData.displayPhoneNumber) {
-            return res.status(204).send(); // Send a 204 status code    
-        }
-
-        if (webhookData.messageType === "interactive" && !webhookData.message.interactive) {
-            logger.error("Invalid interactive message.");
-            return res.status(204).send(); // Send a 204 status code    
+        if (!webhookData) {
+            // logger.warn("Failed to parse webhook data.");
+            return res.status(204).send();
         }
 
         const { from, messageBody, messageType, displayPhoneNumber, phoneNumberId } = webhookData;
-        await logMessageDetails(logger, from, messageBody, messageType);
+
+        if (!from || !messageBody || !messageType || !displayPhoneNumber) {
+            logger.warn("Missing required fields in webhook data.");
+            return res.status(204).send();
+        }
+
+        logger.info("Message details:", { from, messageBody, messageType, displayPhoneNumber });
 
         process.env.PHONE_NUMBER_ID = phoneNumberId;
 
         const clientId = await getClientID(displayPhoneNumber, from);
+        logger.info("Fetched client ID:", clientId);
+
         const pocDetails = await getPocDetails(clientId, from);
+        logger.info("Fetched POC details:", pocDetails);
 
         if (pocDetails) {
             pocView.handlePocView(req, res, webhookData);
@@ -75,7 +84,7 @@ app.post("/webhook", async(req, res) => {
         }
     } catch (error) {
         logger.error(`Error processing webhook: ${error.message}`);
-        res.status(204).send(); // Send a 204 status code   
+        res.status(500).send("Internal Server Error");
     }
 });
 

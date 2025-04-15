@@ -15,7 +15,7 @@ const pool = require("../config/db"); // Import connection pool
 
 
 // WhatsApp API Config
-const WHATSAPP_API_URL = `https://graph.facebook.com/v13.0/423177220884486/messages`
+const WHATSAPP_API_URL = `https://graph.facebook.com/v13.0/505147849340696/messages`
 const WHATSAPP_ACCESS_TOKEN = process.env.WHATSAPP_TOKEN;
 
 
@@ -99,7 +99,7 @@ cron.schedule("* * * * *", async() => {
             const pocReminderTemplateName = await getTemplateMessage(client_id, "POC_APPT_REMINDER");
 
             // Send WhatsApp reminder to Patient
-            await sendWhatsAppReminder(phone_number, customer_name, doctor_name, date, time, client_name, client_email, mediaId, userReminderTemplateName);
+            //await sendWhatsAppReminder(phone_number, customer_name, doctor_name, date, time, client_name, client_email, mediaId, userReminderTemplateName);
 
             // Send WhatsApp reminder to POC
             await sendWhatsAppReminderToPOC(poc_phone, doctor_name, date, time, Appointment_Type, Appointment_ID, client_name, client_email, mediaId, pocReminderTemplateName);
@@ -157,7 +157,7 @@ async function sendWhatsAppReminderToPOC(phone, doctorName, date, time, appointm
 }
 
 async function uploadImage(filePath) {
-    const url = `https://graph.facebook.com/v13.0/423177220884486/media`;
+    const url = `https://graph.facebook.com/v13.0/505147849340696/media`;
     const headers = {
         'Authorization': `Bearer ${process.env.WHATSAPP_TOKEN}`
     };

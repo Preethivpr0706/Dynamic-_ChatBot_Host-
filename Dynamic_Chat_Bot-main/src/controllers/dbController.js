@@ -1,6 +1,17 @@
 const pool = require("../config/db");
 const { sendWhatsAppMessage } = require("../utils/utils");
 const logger = require("../config/Logger");
+const moment = require("moment");
+
+// Helper function to format date for display (04 - Apr (Fri))
+function formatDisplayDate(dateStr) {
+    return moment(dateStr, 'YYYY-MM-DD').format('DD - MMM (ddd)');
+}
+
+// Helper function to parse display date back to database format
+function parseDisplayDate(displayDate) {
+    return moment(displayDate, 'DD - MMM (ddd)').format('YYYY-MM-DD');
+}
 
 function getClientID(displayPhoneNumber, from) {
     return new Promise((resolve, reject) => {
@@ -59,16 +70,16 @@ function getWelcomeMessage(clientId) {
 
 function getMainMenu(clientId, parentMenuID) {
     return new Promise((resolve, reject) => {
-        const query = `   
-            SELECT   
-                Client_ID as CLIENT_ID,   
-                Menu_ID as MENU_ID,   
-                Menu_Name AS MENU_NAME,   
-                Header_Message AS HEADER_MESSAGE,   
-                Action as ACTION   
-            FROM menu   
-            WHERE Client_ID = ? AND Language = 'ENG' AND Parent_Menu_ID = ?   
-            ORDER BY Display_Order;   
+        const query = `
+            SELECT
+                Client_ID as CLIENT_ID,
+                Menu_ID as MENU_ID,
+                Menu_Name AS MENU_NAME,
+                Header_Message AS HEADER_MESSAGE,
+                Action as ACTION
+            FROM menu
+            WHERE Client_ID = ? AND Language = 'ENG' AND Parent_Menu_ID = ?
+            ORDER BY Display_Order;
         `;
 
         logger.debug(`Executing query for Client_ID: ${clientId}, Parent_Menu_ID: ${parentMenuID}`);
@@ -89,91 +100,106 @@ function getMainMenu(clientId, parentMenuID) {
     });
 }
 
+async function getFromList(iClientId, iMenuId, iKey, iLang, appointmentId) {
+    logger.info(`getFromList: iClientId:${iClientId}, iMenuId:${iMenuId}, iKey:${iKey}, iLang:${iLang}`);
 
+    const query = `SELECT
+        Client_ID as CLIENT_ID,
+        ? as MENU_ID,
+        Item_ID as ITEM_ID,
+        Value_name as MENU_NAME,
+        Branch_ID as branchID
+    FROM LIST
+    WHERE Client_ID = ? AND Key_name = ? AND Lang = ?
+    ORDER BY Display_order
+    LIMIT 10`;
 
-function getFromList(iClientId, iMenuId, iKey, iLang) {
-    return new Promise((resolve, reject) => {
-        logger.info(
-            `getFromList: iClientId:${iClientId} , iMenuId:${iMenuId} ,iKey:${iKey} , iLang:${iLang}`
-        );
-        const query = `SELECT   
-             Client_ID as CLIENT_ID,   
-             ? MENU_ID,   
-             Item_ID as ITEM_ID,   
-             Value_name as MENU_NAME   
-           FROM LIST   
-           WHERE  Client_ID= ?   
-             AND Key_name = ?   
-             AND Lang = ?   
-           ORDER BY Display_order   
-           LIMIT 10`;
+    logger.debug(`Executing query: ${query} with params: ${[iMenuId, iClientId, iKey, iLang]}`);
 
-        logger.debug(`Executing query for Client_ID: ${iClientId}, Menu_ID: ${iMenuId}, Key_name: ${iKey}, Lang: ${iLang}`);
-        pool.execute(
-            query, [iMenuId, iClientId, iKey, iLang],
-            (err, results) => {
-                if (err) {
-                    logger.error("Error running query:", err);
-                    return reject(err);
-                }
-                logger.info("Query results:", results);
-                resolve(results);
-            }
-        );
-    });
+    try {
+        const [results] = await pool.promise().execute(query, [iMenuId, iClientId, iKey, iLang]);
+        logger.info("Query results:", results);
+        return results;
+    } catch (err) {
+        logger.error("Error in getFromList:", err);
+        throw err;
+    }
 }
 
-function getPocFromPoc(iClientId, iMenuId, iKey) {
-    return new Promise((resolve, reject) => {
-        logger.info(
-            `getFromPOC: iClientId:${iClientId} , iMenuId:${iMenuId} ,iKey:${iKey}`
-        );
-        let query;
-        let params;
-
-        if (iKey === null) {
-            query = `SELECT    
-             Client_ID as CLIENT_ID,    
-             ? MENU_ID,    
-             POC_ID as ITEM_ID,    
-             POC_Name as MENU_NAME    
-           FROM POC    
-           WHERE  Client_ID= ?    
-             LIMIT 10`;
-            params = [iMenuId, iClientId];
-        } else {
-            query = `SELECT    
-             Client_ID as CLIENT_ID,    
-             ? MENU_ID,    
-             POC_ID as ITEM_ID,    
-             POC_Name as MENU_NAME    
-           FROM POC    
-           WHERE  Client_ID= ?    
-             AND Specialization = ?    
-             LIMIT 10`;
-            params = [iMenuId, iClientId, iKey];
+async function getPocFromPoc(iClientId, iMenuId, iKey, appointmentId) {
+    try {
+        if (!iClientId || !iMenuId) {
+            throw new Error('Missing required parameters: iClientId and iMenuId must be provided');
         }
 
-        logger.debug(`Executing query for Client_ID: ${iClientId}, Menu_ID: ${iMenuId}, Specialization: ${iKey}`);
-        pool.execute(query, params, (err, results) => {
-            if (err) {
-                logger.error("Error running query:", err);
-                return reject(err);
+        let branchId = 0;
+        if (appointmentId) {
+            try {
+                const branchData = await getAppointmentJsonDataByKey(appointmentId, "Branch_ID");
+                branchId = branchData ? parseInt(branchData) : 0;
+            } catch (error) {
+                logger.error(`Error fetching branch data for appointment ${appointmentId}:`, error);
             }
-            logger.info("Query results:", results);
-            resolve(results);
-        });
-    });
+        }
+
+        logger.info(`getPocFromPoc: iClientId:${iClientId}, iMenuId:${iMenuId}, iKey:${iKey}, branchId:${branchId}`);
+
+        let query = `
+            SELECT
+                p.Client_ID as CLIENT_ID,
+                ? as MENU_ID,
+                p.POC_ID as ITEM_ID,
+                p.POC_Name as MENU_NAME,
+                p.Specialization
+            FROM POC p
+            WHERE p.Client_ID = ?`;
+
+        let params = [iMenuId, iClientId];
+
+        if (iKey && iKey !== 'null') {
+            query += ` AND (
+                FIND_IN_SET(?, p.Specialization) > 0
+                OR p.Department_ID = ?
+            )`;
+            params.push(iKey, iKey);
+        }
+
+        if (branchId > 0) {
+            query += ` AND EXISTS (
+                SELECT 1 FROM POC_Schedules s
+                WHERE s.POC_ID = p.POC_ID
+                AND (s.Branch_ID = ? OR s.Branch_ID = 0)
+            )`;
+            params.push(branchId);
+        }
+
+        query += ` LIMIT 10`;
+
+        logger.debug(`Executing query: ${query} with params: ${params}`);
+
+        const [results] = await pool.promise().execute(query, params);
+
+        if (!results || results.length === 0) {
+            logger.warn(`No POCs found for client ${iClientId} with the given criteria`);
+            return [];
+        }
+
+        logger.info(`Found ${results.length} POCs matching the criteria`);
+        return results;
+    } catch (err) {
+        logger.error("Error in getPocFromPoc:", err);
+        throw err;
+    }
 }
 
 function getPocDetails(ClientId, from) {
     return new Promise((resolve, reject) => {
         logger.info(`getFromPOC: from:${from}`);
-        const query = `SELECT   
-             POC_ID as POC_ID,   
-             POC_Name as POC_NAME   
-           FROM POC   
-           WHERE  Client_ID= ?   
+        const query = `SELECT
+             POC_ID as POC_ID,
+             POC_Name as POC_NAME
+           FROM POC
+           WHERE  Client_ID= ?
              AND Contact_Number = ?`;
 
         logger.debug(`Executing query for Client_ID: ${ClientId}, Contact_Number: ${from}`);
@@ -189,49 +215,65 @@ function getPocDetails(ClientId, from) {
 }
 
 const getAvailableDates = (clientId, menuId, pocIdOrAppointmentType, Appointment_ID) => {
-    return new Promise((resolve, reject) => {
-        // Check if pocIdOrAppointmentType is an appointment type    
-        const query = `SELECT * FROM POC WHERE CLIENT_ID = ? AND Specialization = ?`;
-        logger.debug(`Executing query for Client_ID: ${clientId}, Specialization: ${pocIdOrAppointmentType}`);
-
-        pool.query(query, [clientId, pocIdOrAppointmentType], (err, results) => {
-            if (err) {
-                logger.error("Error fetching POC details:", err);
-                return reject(err);
+    return new Promise(async(resolve, reject) => {
+        try {
+            let branchId = 0;
+            if (Appointment_ID) {
+                const branchData = await getAppointmentJsonDataByKey(Appointment_ID, "Branch_ID");
+                branchId = branchData ? parseInt(branchData) : 0;
             }
 
-            if (results.length > 0) {
-                const pocId = results[0].POC_ID;
-                // Update the POC ID in the Appointments table    
-                updateAppointment("POC_ID", pocId, Appointment_ID);
-                updateAppointmentJsonData(Appointment_ID, "Poc_ID", pocId);
+            const query = `SELECT * FROM POC WHERE CLIENT_ID = ? AND Specialization LIKE ?`;
+            logger.debug(`Executing query for Client_ID: ${clientId}, Specialization: ${pocIdOrAppointmentType}`);
 
-                // Retrieve the available dates    
+            pool.query(query, [clientId, `%${pocIdOrAppointmentType}%`], async(err, results) => {
+                if (err) {
+                    logger.error("Error fetching POC details:", err);
+                    return reject(err);
+                }
+
+                let pocId = pocIdOrAppointmentType;
+                let isPocIdDirect = false;
+
+                if (results.length > 0) {
+                    pocId = results[0].POC_ID;
+                    await updateAppointment("POC_ID", pocId, Appointment_ID);
+                    await updateAppointmentJsonData(Appointment_ID, "Poc_ID", pocId);
+                } else {
+                    isPocIdDirect = true;
+                }
+
                 const availableDatesQuery = `
-                    SELECT DISTINCT    
-                        ? AS CLIENT_ID,    
-                        ? AS MENU_ID,    
-                        CONCAT(POC_ID, '-', DATE_FORMAT(Schedule_Date, '%Y-%m-%d')) AS ITEM_ID,    
-                        DATE_FORMAT(Schedule_Date, '%Y-%m-%d') AS MENU_NAME,    
-                        Schedule_Date    
-                    FROM poc_available_slots    
-                    WHERE POC_ID = ?    
-                        AND Schedule_Date >= CURDATE()    
-                        AND appointments_per_slot > 0  
-                        AND Active_Status = 'unblocked'  
-                        AND EXISTS (    
-                            SELECT 1    
-                            FROM poc_available_slots AS slots    
-                            WHERE slots.POC_ID = poc_available_slots.POC_ID    
-                                AND slots.Schedule_Date = poc_available_slots.Schedule_Date    
-                                AND (slots.Schedule_Date > CURDATE() OR (slots.Schedule_Date = CURDATE() AND slots.Start_Time >= CURTIME()))    
-                        )    
-                    ORDER BY Schedule_Date    
-                    LIMIT 10    
+                    SELECT DISTINCT
+                        ? AS CLIENT_ID,
+                        ? AS MENU_ID,
+                        CONCAT(POC_ID, '-', DATE_FORMAT(Schedule_Date, '%Y-%m-%d')) AS ITEM_ID,
+                        DATE_FORMAT(Schedule_Date, '%Y-%m-%d') AS MENU_NAME,
+                        Schedule_Date
+                    FROM poc_available_slots
+                    WHERE POC_ID = ?
+                    ${branchId > 0 ? 'AND (Branch_ID = ? OR Branch_ID = 0)' : ''}
+                    AND Schedule_Date >= CURDATE()
+                    AND appointments_per_slot > 0
+                    AND Active_Status = 'unblocked'
+                    AND EXISTS (
+                        SELECT 1
+                        FROM poc_available_slots AS slots
+                        WHERE slots.POC_ID = poc_available_slots.POC_ID
+                            AND slots.Schedule_Date = poc_available_slots.Schedule_Date
+                            AND (slots.Schedule_Date > CURDATE() OR
+                                (slots.Schedule_Date = CURDATE() AND slots.Start_Time >= CURTIME()))
+                    )
+                    ORDER BY Schedule_Date
+                    LIMIT 10
                 `;
-                logger.debug(`Executing query for Client_ID: ${clientId}, Menu_ID: ${menuId}, POC_ID: ${pocId}`);
 
-                pool.query(availableDatesQuery, [clientId, menuId, pocId], (err, availableDates) => {
+                const queryParams = [clientId, menuId, pocId];
+                if (branchId > 0) queryParams.push(branchId);
+
+                logger.debug(`Executing query: ${availableDatesQuery} with params: ${queryParams}`);
+
+                pool.query(availableDatesQuery, queryParams, (err, availableDates) => {
                     if (err) {
                         logger.error("Error fetching available dates:", err);
                         return reject(err);
@@ -241,94 +283,91 @@ const getAvailableDates = (clientId, menuId, pocIdOrAppointmentType, Appointment
                         CLIENT_ID,
                         MENU_ID,
                         ITEM_ID,
-                        MENU_NAME,
+                        MENU_NAME: formatDisplayDate(MENU_NAME) // Format date for display
                     }));
-                    resolve(formattedResults);
-                });
-            } else {
-                // If pocIdOrAppointmentType is not an appointment type, assume it's a POC ID    
-                const availableDatesQuery = `
-                    SELECT DISTINCT    
-                        ? AS CLIENT_ID,    
-                        ? AS MENU_ID,    
-                        CONCAT(POC_ID, '-', DATE_FORMAT(Schedule_Date, '%Y-%m-%d')) AS ITEM_ID,    
-                        DATE_FORMAT(Schedule_Date, '%Y-%m-%d') AS MENU_NAME,    
-                        Schedule_Date    
-                    FROM poc_available_slots    
-                    WHERE POC_ID = ?    
-                        AND Schedule_Date >= CURDATE()    
-                        AND appointments_per_slot > 0   
-                        AND Active_Status = 'unblocked' 
-                        AND EXISTS (    
-                            SELECT 1    
-                            FROM poc_available_slots AS slots    
-                            WHERE slots.POC_ID = poc_available_slots.POC_ID    
-                                AND slots.Schedule_Date = poc_available_slots.Schedule_Date    
-                                AND (slots.Schedule_Date > CURDATE() OR (slots.Schedule_Date = CURDATE() AND slots.Start_Time >= CURTIME()))    
-                        )    
-                    ORDER BY Schedule_Date    
-                    LIMIT 10    
-                `;
-                logger.debug(`Executing query for Client_ID: ${clientId}, Menu_ID: ${menuId}, POC_ID: ${pocIdOrAppointmentType}`);
 
-                pool.query(availableDatesQuery, [clientId, menuId, pocIdOrAppointmentType], (err, availableDates) => {
-                    if (err) {
-                        logger.error("Error fetching available dates:", err);
-                        return reject(err);
+                    if (isPocIdDirect && Appointment_ID) {
+                        pool.query(`SELECT POC_Name FROM POC WHERE POC_ID = ?`, [pocId], (err, pocResults) => {
+                            if (!err && pocResults.length > 0) {
+                                updateAppointment("Poc_name", pocResults[0].POC_Name, Appointment_ID, pocId);
+                            }
+                            resolve(formattedResults);
+                        });
+                    } else {
+                        resolve(formattedResults);
                     }
-
-                    const formattedResults = availableDates.map(({ CLIENT_ID, MENU_ID, ITEM_ID, MENU_NAME }) => ({
-                        CLIENT_ID,
-                        MENU_ID,
-                        ITEM_ID,
-                        MENU_NAME,
-                    }));
-                    resolve(formattedResults);
                 });
-            }
-        });
+            });
+        } catch (error) {
+            logger.error("Error in getAvailableDates:", error);
+            reject(error);
+        }
     });
 };
 
-
 function getAvailableTimes(iClientId, iMenuId, iKey, iValue) {
-    return new Promise((resolve, reject) => {
-        logger.info(
-            `getAvailableTimes: iClientId:${iClientId} ,iMenuId: ${iMenuId}, iKey: ${iKey}, iValue: ${iValue}`
-        );
-        const query = `   
-        SELECT DISTINCT   
-            ? AS CLIENT_ID,   
-            ? AS MENU_ID,   
-            CONCAT(POC_ID, '-', DATE_FORMAT(Schedule_Date, '%Y-%m-%d'), '-', Start_Time) AS ITEM_ID,   
-            Start_Time AS MENU_NAME   
-        FROM poc_available_slots   
-        WHERE POC_ID = ?   
-            AND Schedule_Date = STR_TO_DATE(?, '%Y-%m-%d')   
-            AND appointments_per_slot > 0   
-            AND Active_Status = 'unblocked'
-            AND (Schedule_Date > CURDATE() OR (Schedule_Date = CURDATE() AND Start_Time >= CURTIME()))   
-        ORDER BY Start_Time   
-        LIMIT 10   
-        `;
+    return new Promise(async(resolve, reject) => {
+        try {
+            logger.info(
+                `getAvailableTimes: iClientId:${iClientId}, iMenuId:${iMenuId}, iKey:${iKey}, iValue:${iValue}`
+            );
 
-        logger.debug(`Executing query for Client_ID: ${iClientId}, Menu_ID: ${iMenuId}, POC_ID: ${iKey}, Schedule_Date: ${iValue}`);
+            // Parse the display date back to database format
+            const dbDate = parseDisplayDate(iValue);
 
-        pool.execute(query, [iClientId, iMenuId, iKey, iValue], (err, results) => {
-            if (err) {
-                logger.error("Error fetching available times:", err);
-                reject(err);
-            } else {
-                resolve(results); // Return only available times
+            let pocId = iKey;
+            let appointmentId = null;
+
+            if (iKey.includes('~')) {
+                [pocId, appointmentId] = iKey.split('~');
             }
-        });
+
+            let branchId = 0;
+            if (appointmentId) {
+                const branchData = await getAppointmentJsonDataByKey(appointmentId, "Branch_ID");
+                branchId = branchData ? parseInt(branchData) : 0;
+            }
+
+            const query = `
+                SELECT DISTINCT
+                    ? AS CLIENT_ID,
+                    ? AS MENU_ID,
+                    CONCAT(POC_ID, '-', DATE_FORMAT(Schedule_Date, '%Y-%m-%d'), '-', Start_Time) AS ITEM_ID,
+                    Start_Time AS MENU_NAME
+                FROM poc_available_slots
+                WHERE POC_ID = ?
+                AND Schedule_Date = ?
+                ${branchId > 0 ? 'AND (Branch_ID = ? OR Branch_ID = 0)' : ''}
+                AND appointments_per_slot > 0
+                AND Active_Status = 'unblocked'
+                AND (Schedule_Date > CURDATE() OR (Schedule_Date = CURDATE() AND Start_Time >= CURTIME()))
+                ORDER BY Start_Time
+                LIMIT 10
+            `;
+
+            const queryParams = [iClientId, iMenuId, pocId, dbDate];
+            if (branchId > 0) queryParams.push(branchId);
+
+            logger.debug(`Executing query: ${query} with params: ${queryParams}`);
+
+            pool.execute(query, queryParams, (err, results) => {
+                if (err) {
+                    logger.error("Error fetching available times:", err);
+                    reject(err);
+                } else {
+                    resolve(results);
+                }
+            });
+        } catch (error) {
+            logger.error("Error in getAvailableTimes:", error);
+            reject(error);
+        }
     });
 }
 
-// Get user data by contact number   
 function getUserData(userContact) {
     return new Promise((resolve, reject) => {
-        const query = `SELECT * 
+        const query = `SELECT *
         FROM Users
         WHERE User_Contact = ?`;
         logger.debug(`Executing query for User_Contact: ${userContact}`);
@@ -338,32 +377,33 @@ function getUserData(userContact) {
                 logger.error("Error fetching user data:", err);
                 reject(err);
             } else {
-                // Check if results contain any rows, if not, resolve with null
                 resolve(results.length > 0 ? results[0] : null);
             }
         });
     });
 }
+
 async function insertUserData(userContact, clientId) {
     const query = "INSERT IGNORE INTO Users (User_Contact, Client_ID) VALUES (?,?)";
     logger.debug(`Executing query for User_Contact: ${userContact}`);
 
     try {
-        const [result] = await pool.execute(query, [userContact, clientId]);
+        const result = await pool.execute(query, [userContact, clientId]);
         return result;
     } catch (err) {
         logger.error("Error inserting user data:", err);
         throw err;
     }
 }
+
 async function updateUserField(userContact, field, value) {
-    const query = `UPDATE Users 
-    SET ${field} = ? 
+    const query = `UPDATE Users
+    SET ${field} = ?
     WHERE User_Contact = ?`;
     logger.debug(`Executing query for User_Contact: ${userContact}, Field: ${field}`);
 
     try {
-        const [result] = await pool.execute(query, [value, userContact]);
+        const result = await pool.execute(query, [value, userContact]);
         return result;
     } catch (err) {
         logger.error("Error updating user field:", err);
@@ -371,8 +411,6 @@ async function updateUserField(userContact, field, value) {
     }
 }
 
-
-// Insert a new appointment into the Appointments table
 async function insertAppointment(clientId, userId) {
     const query = `
         INSERT INTO Appointments (Client_ID, User_ID, POC_ID, Appointment_Date, Appointment_Time, Appointment_Type, Status, Is_Active, JSON_DATA)
@@ -399,10 +437,9 @@ async function insertAppointment(clientId, userId) {
     }
 }
 
-// Fetch appointment details using userId for cancel and reschedule
 async function getAppointmentDetailsByUserID(userId) {
     const query = `
-        SELECT 
+        SELECT
             Appointment_Type,
             POC_ID,
             Appointment_ID,
@@ -417,18 +454,22 @@ async function getAppointmentDetailsByUserID(userId) {
 
     try {
         const [rows] = await pool.promise().execute(query, [userId]);
-        logger.info(rows);
-        return rows;
+        // Format dates for display
+        const formattedRows = rows.map(row => ({
+            ...row,
+            Appointment_Date: row.Appointment_Date ? formatDisplayDate(row.Appointment_Date) : null
+        }));
+        logger.info(formattedRows);
+        return formattedRows;
     } catch (err) {
         logger.error("Error fetching appointment details:", err);
         throw err;
     }
 }
 
-// Fetch appointment details using Appointment_ID
 async function getAppointmentDetailsByAppointmentId(appointmentId) {
     const query = `
-        SELECT 
+        SELECT
             Appointment_Type,
             POC_ID,
             DATE_FORMAT(Appointment_Date, '%Y-%m-%d') as Appointment_Date,
@@ -454,7 +495,6 @@ async function getAppointmentDetailsByAppointmentId(appointmentId) {
     }
 }
 
-// Fetch template message by clientId and templateName
 async function getTemplateMessage(clientId, templateName) {
     const query = `
         SELECT TEMPLATE_TEXT
@@ -466,7 +506,7 @@ async function getTemplateMessage(clientId, templateName) {
     try {
         const [rows] = await pool.promise().execute(query, [clientId, templateName]);
         if (rows.length > 0) {
-            return rows[0].TEMPLATE_TEXT; // Return the template text
+            return rows[0].TEMPLATE_TEXT;
         } else {
             logger.error(`Template for ${templateName} not found for client ${clientId}`);
             throw new Error(`Template for ${templateName} not found for client ${clientId}`);
@@ -476,10 +516,10 @@ async function getTemplateMessage(clientId, templateName) {
         throw err;
     }
 }
-// Get Meet Link for a given POC_ID
+
 async function getMeetLink(pocId) {
     if (pocId === null || pocId === undefined) {
-        return null; // Return null immediately if pocId is null or undefined   
+        return null;
     }
     const query = `SELECT Meet_Link FROM POC WHERE POC_ID = ?`;
     logger.debug(`Executing query for POC_ID: ${pocId}`);
@@ -493,11 +533,10 @@ async function getMeetLink(pocId) {
     }
 }
 
-// Update JSON data for an appointment
 const updateAppointmentJsonData = async(appointmentId, key, value) => {
     const updateQuery = `
-        UPDATE Appointments 
-        SET JSON_DATA = JSON_SET(JSON_DATA, '$.${key}', ?) 
+        UPDATE Appointments
+        SET JSON_DATA = JSON_SET(JSON_DATA, '$.${key}', ?)
         WHERE Appointment_ID = ?
     `;
     logger.debug(`Executing query for Appointment_ID: ${appointmentId}, Key: ${key}`);
@@ -511,9 +550,8 @@ const updateAppointmentJsonData = async(appointmentId, key, value) => {
     }
 };
 
-// Update an appointment's column value
-const updateAppointment = async(column_name, value, appointmentId, iSelectId) => {
-    const nonColumns = ["Department", "Confirm_Status", "Emergency_Reason", "Appointment_Function", "Finalize_Status"];
+async function updateAppointment(column_name, value, appointmentId, iSelectId, branchID) {
+    const nonColumns = ["Department", "Confirm_Status", "Emergency_Reason", "Appointment_Function", "Finalize_Status", "Branch"];
 
     if (nonColumns.includes(column_name)) {
         try {
@@ -525,11 +563,13 @@ const updateAppointment = async(column_name, value, appointmentId, iSelectId) =>
         }
     } else if (column_name === "Poc_name") {
         const updateQuery = `
-            UPDATE Appointments 
-            SET POC_ID = ?, JSON_DATA = JSON_SET(JSON_DATA, '$.Poc_ID', ?), JSON_DATA = JSON_SET(JSON_DATA, '$.Poc_name', ?)
+            UPDATE Appointments
+            SET POC_ID = ?, JSON_DATA = JSON_SET(JSON_DATA, '$.Poc_ID', ?),
+                JSON_DATA = JSON_SET(JSON_DATA, '$.Poc_name', ?)
             WHERE Appointment_ID = ?
         `;
-        logger.debug(`Executing query for Appointment_ID: ${appointmentId}, POC_ID: ${iSelectId}, Poc_name: ${value}`);
+
+        logger.debug(`Executing query: ${updateQuery} with params: ${[iSelectId, iSelectId, value, appointmentId]}`);
 
         try {
             await pool.promise().execute(updateQuery, [iSelectId, iSelectId, value, appointmentId]);
@@ -538,13 +578,50 @@ const updateAppointment = async(column_name, value, appointmentId, iSelectId) =>
             logger.error("Error updating POC ID and JSON data:", err);
             throw err;
         }
-    } else {
+    } else if (column_name == "Branch_ID") {
+        await updateAppointmentJsonData(appointmentId, "Branch", value);
+
         const updateQuery = `
-            UPDATE Appointments 
-            SET ${column_name} = ?, JSON_DATA = JSON_SET(JSON_DATA, '$.${column_name}', ?) 
+        UPDATE Appointments
+        SET ${column_name} = ?, JSON_DATA = JSON_SET(JSON_DATA, '$.${column_name}', ?)
+        WHERE Appointment_ID = ? AND Status <> "Rescheduled"
+        `;
+
+        logger.debug(`Executing query: ${updateQuery} with params: ${branchID, branchID, appointmentId}`);
+
+        try {
+            await pool.promise().execute(updateQuery, [branchID, branchID, appointmentId]);
+            logger.info("Appointment updated successfully");
+        } catch (err) {
+            logger.error("Error updating appointment:", err);
+            throw err;
+        }
+    } else if (column_name === "Appointment_Date") {
+        // Parse display date back to database format before storing
+        const dbDate = parseDisplayDate(value);
+        const updateQuery = `
+            UPDATE Appointments
+            SET ${column_name} = ?, JSON_DATA = JSON_SET(JSON_DATA, '$.${column_name}', ?)
             WHERE Appointment_ID = ? AND Status <> "Rescheduled"
         `;
-        logger.debug(`Executing query for Appointment_ID: ${appointmentId}, Column: ${column_name}, Value: ${value}`);
+
+        logger.debug(`Executing query: ${updateQuery} with params: ${[dbDate, dbDate, appointmentId]}`);
+
+        try {
+            await pool.promise().execute(updateQuery, [dbDate, dbDate, appointmentId]);
+            logger.info("Appointment updated successfully");
+        } catch (err) {
+            logger.error("Error updating appointment:", err);
+            throw err;
+        }
+    } else {
+        const updateQuery = `
+            UPDATE Appointments
+            SET ${column_name} = ?, JSON_DATA = JSON_SET(JSON_DATA, '$.${column_name}', ?)
+            WHERE Appointment_ID = ? AND Status <> "Rescheduled"
+        `;
+
+        logger.debug(`Executing query: ${updateQuery} with params: ${[value, value, appointmentId]}`);
 
         try {
             await pool.promise().execute(updateQuery, [value, value, appointmentId]);
@@ -554,13 +631,12 @@ const updateAppointment = async(column_name, value, appointmentId, iSelectId) =>
             throw err;
         }
     }
-};
+}
 
-// Get a specific value from the JSON data of an appointment
 const getAppointmentJsonDataByKey = async(appointmentId, key) => {
     const query = `
-        SELECT JSON_EXTRACT(JSON_DATA, '$.${key}') AS value    
-        FROM Appointments    
+        SELECT JSON_EXTRACT(JSON_DATA, '$.${key}') AS value
+        FROM Appointments
         WHERE Appointment_ID = ?
     `;
     logger.debug(`Executing query for Appointment_ID: ${appointmentId}, Key: ${key}`);
@@ -568,18 +644,22 @@ const getAppointmentJsonDataByKey = async(appointmentId, key) => {
     try {
         const [results] = await pool.promise().execute(query, [appointmentId]);
         const value = results[0].value;
+        // If this is a date field, format it for display
+        if (key === "Appointment_Date" && value) {
+            return formatDisplayDate(value.replace(/"/g, ''));
+        }
         return value;
     } catch (err) {
         logger.error("Error retrieving JSON data:", err);
         throw err;
     }
 };
-// Get JSON data for a specific appointment
+
 const getAppointmentJsonData = async(appointmentId) => {
     const query = `
-        SELECT JSON_DATA    
-        FROM Appointments    
-        WHERE Appointment_ID = ?    
+        SELECT JSON_DATA
+        FROM Appointments
+        WHERE Appointment_ID = ?
     `;
     logger.debug(`Executing query for Appointment_ID: ${appointmentId}`);
 
@@ -589,14 +669,21 @@ const getAppointmentJsonData = async(appointmentId) => {
             logger.warn(`No data found for Appointment_ID: ${appointmentId}`);
             return null;
         }
-        return results[0]; // Return the JSON data
+        // Format any date fields in the JSON data
+        const jsonData = results[0];
+        // Format any date fields in the JSON data
+
+        if (jsonData && jsonData.Appointment_Date) {
+            jsonData.Appointment_Date = formatDisplayDate(jsonData.Appointment_Date);
+        }
+        return jsonData;
+        return jsonData;
     } catch (err) {
         logger.error("Error retrieving JSON data:", err);
         throw err;
     }
 };
 
-// Update available slots after appointment booking
 const updateAvailableSlots = async(jsonData) => {
     logger.info(`updateAvailableSlots: ${JSON.stringify(jsonData["JSON_DATA"], null, 2)}`);
 
@@ -606,16 +693,16 @@ const updateAvailableSlots = async(jsonData) => {
     }
 
     const query = `
-        UPDATE POC_Available_Slots    
-        SET appointments_per_slot = appointments_per_slot - 1    
-        WHERE POC_ID = ? AND Schedule_Date = ? AND Start_Time = ? 
-        AND appointments_per_slot > 0 AND Active_Status = 'unblocked';    
+        UPDATE POC_Available_Slots
+        SET appointments_per_slot = appointments_per_slot - 1
+        WHERE POC_ID = ? AND Schedule_Date = ? AND Start_Time = ?
+        AND appointments_per_slot > 0 AND Active_Status = 'unblocked';
     `;
 
-    // Access the nested `JSON_DATA` object   
     const data = jsonData.JSON_DATA;
     const doctorId = data.Poc_ID;
-    const appointmentDate = data.Appointment_Date;
+    // Parse display date back to database format if needed
+    const appointmentDate = data.Appointment_Date ? parseDisplayDate(data.Appointment_Date) : data.Appointment_Date;
     const appointmentTime = data.Appointment_Time;
 
     logger.debug(`Executing query for POC_ID: ${doctorId}, Schedule_Date: ${appointmentDate}, Start_Time: ${appointmentTime}`);
@@ -627,7 +714,6 @@ const updateAvailableSlots = async(jsonData) => {
     }
 };
 
-// Increase available slots when an appointment is canceled or modified
 const increaseAvailableSlots = async(jsonData) => {
     logger.info(`increaseAvailableSlots: ${JSON.stringify(jsonData["JSON_DATA"], null, 2)}`);
 
@@ -636,14 +722,14 @@ const increaseAvailableSlots = async(jsonData) => {
         return;
     }
 
-    // Access the nested `JSON_DATA` object   
     const data = jsonData.JSON_DATA;
     const pocId = data.Poc_ID;
-    const appointmentDate = data.Appointment_Date;
+    // Parse display date back to database format if needed
+    const appointmentDate = data.Appointment_Date ? parseDisplayDate(data.Appointment_Date) : data.Appointment_Date;
     const appointmentTime = data.Appointment_Time;
 
     const query = `
-        UPDATE POC_Available_Slots 
+        UPDATE POC_Available_Slots
         SET appointments_per_slot = appointments_per_slot + 1
         WHERE POC_ID = ? AND Schedule_Date = ? AND Start_Time = ?;
     `;
@@ -657,27 +743,22 @@ const increaseAvailableSlots = async(jsonData) => {
     }
 };
 
-const moment = require("moment-timezone");
-
-// Function to get appointment details for POC view with pagination
 async function getAppointmentDetailsForPocView(pocId, pageNumber, batchSize) {
     const query1 = `
-        SELECT * 
+        SELECT *
         FROM poc_available_slots
         WHERE POC_ID = ? AND Schedule_Date >= CURDATE()
         ORDER BY Schedule_Date, Start_Time
     `;
     const query2 = `
-        SELECT * 
+        SELECT *
         FROM poc_schedules
         WHERE POC_ID = ?
     `;
     logger.debug(`Executing query for POC_ID: ${pocId}`);
 
     try {
-        // Fetch available slots
         const [availableSlots] = await pool.promise().execute(query1, [pocId]);
-        // Fetch schedules
         const [schedules] = await pool.promise().execute(query2, [pocId]);
 
         const appointmentDetails = [];
@@ -696,7 +777,7 @@ async function getAppointmentDetailsForPocView(pocId, pageNumber, batchSize) {
                     slot.Schedule_Date,
                     "YYYY-MM-DD",
                     "Asia/Kolkata"
-                ); // Asia/Kolkata is the time zone for India Standard Time   
+                );
                 const time = moment.tz(
                     `1970-01-01T${slot.Start_Time}Z`,
                     "YYYY-MM-DDTHH:mm:ssZ",
@@ -713,7 +794,7 @@ async function getAppointmentDetailsForPocView(pocId, pageNumber, batchSize) {
                     appointmentTime.isSameOrAfter(currentTime)
                 ) {
                     appointmentDetails.push({
-                        date: date.format("YYYY-MM-DD"),
+                        date: formatDisplayDate(date.format("YYYY-MM-DD")), // Format for display
                         day: date.format("dddd"),
                         time: time.format("HH:mm:ss"),
                         noOfAppointments: appointmentsCount,
@@ -722,7 +803,6 @@ async function getAppointmentDetailsForPocView(pocId, pageNumber, batchSize) {
             }
         });
 
-        // Paginate the results   
         const start = (pageNumber - 1) * batchSize;
         const end = start + batchSize;
         if (start >= appointmentDetails.length) {
@@ -736,7 +816,6 @@ async function getAppointmentDetailsForPocView(pocId, pageNumber, batchSize) {
     }
 }
 
-// Helper function to get the day of the week from a date   
 function getDayOfWeek(date) {
     const dayOfWeek = new Date(date).getDay();
     switch (dayOfWeek) {
@@ -757,7 +836,6 @@ function getDayOfWeek(date) {
     }
 }
 
-// Function to retrieve the POC's details by POC ID
 async function getPocDetailsByPocId(pocId) {
     const query = `SELECT * FROM POC WHERE POC_ID = ?`;
     logger.debug(`Executing query for POC_ID: ${pocId}`);
@@ -771,44 +849,43 @@ async function getPocDetailsByPocId(pocId) {
     }
 }
 
-// Function to fetch upcoming appointments
 async function fetchUpcomingAppointments() {
     const query = `
         SELECT
-            u.User_Name AS customer_name, 
-            u.User_Contact AS phone_number, 
-            a.Appointment_Date, 
-            a.Appointment_Time, 
-            a.Appointment_Type, 
-            a.Appointment_ID, 
-            p.POC_Name AS doctor_name, 
-            p.Contact_Number AS poc_phone, 
-            c.Client_Name AS client_name, 
+            u.User_Name AS customer_name,
+            u.User_Contact AS phone_number,
+            a.Appointment_Date,
+            a.Appointment_Time,
+            a.Appointment_Type,
+            a.Appointment_ID,
+            p.POC_Name AS doctor_name,
+            p.Contact_Number AS poc_phone,
+            c.Client_Name AS client_name,
             c.Email AS client_email,
             c.Client_ID AS client_id
         FROM appointments a
-        JOIN users u 
+        JOIN users u
             ON a.User_ID = u.User_ID
-        JOIN poc p 
+        JOIN poc p
             ON a.POC_ID = p.POC_ID
-        JOIN client c 
+        JOIN client c
             ON p.Client_ID = c.Client_ID
         WHERE
-            a.Status = 'Confirmed' 
-            AND a.Is_Active = 1 
+            a.Status = 'Confirmed'
+            AND a.Is_Active = 1
             AND TIMESTAMPDIFF(MINUTE, NOW(), CONCAT(a.Appointment_Date, ' ', a.Appointment_Time)) = 120;
     `;
 
     try {
         const [rows] = await pool.promise().execute(query);
+
         return rows;
     } catch (err) {
         logger.error("Error fetching upcoming appointments:", err);
-        throw err;
+        throw  err;    
     }
 }
 
-// Function to retrieve client details by Client_ID
 async function getClientDetails(clientId) {
     const query = `SELECT * FROM Client WHERE Client_ID = ?`;
     logger.debug(`Executing query for Client_ID: ${clientId}`);
@@ -823,7 +900,87 @@ async function getClientDetails(clientId) {
 }
 
 
+async function getTransactionIdByAppointmentId(appointmentId) {
+    const query = `SELECT transaction_id FROM transactions WHERE appointment_id = ?`;
+    logger.debug(`Executing query for Appointment_ID: ${appointmentId}`);
+
+    try {
+        const [results] = await pool.promise().execute(query, [appointmentId]);
+        return results[0].transaction_id;
+    } catch (err) {
+        logger.error("Error fetching Transaction ID:", err);
+        throw err;
+    }
+}
+
+async function updateAppointmentIdByTransactionId(transaction_id, appointmentId) {
+    const query = `UPDATE transactions SET appointment_id =? WHERE transaction_id =?;`;
+    logger.debug(`Executing query for Transaction_ID: ${transaction_id} and Appointment_ID: ${appointmentId}`);
+
+    try {
+        await pool.promise().execute(query, [appointmentId, transaction_id]);
+    } catch (err) {
+        logger.error("Error updating Appointment ID:", err);
+        throw err;
+    }
+}
+
+async function fetchCompletedAppointments() {
+    try {
+        const query = `
+            SELECT a.Appointment_ID as Appointment_ID, u.User_Name as customer_name, u.User_Contact as phone_number,
+                   a.Appointment_Date, a.Appointment_Time, a.Status,
+                   c.Client_Name as client_name, a.Client_ID as client_id, c.Email as Client_Email
+            FROM appointments a
+            JOIN client c ON a.Client_ID = c.Client_ID
+            JOIN users u ON a.User_ID = u.User_ID
+            WHERE a.Status = 'Availed'
+            AND (a.feedback_sent = 0 OR a.feedback_sent IS NULL)
+            AND a.Appointment_Date <= CURDATE()
+            ORDER BY a.Appointment_Date DESC, a.Appointment_Time DESC
+            LIMIT 50
+        `;
+
+        const [appointments] = await pool.promise().execute(query);
+        console.log(`Found ${appointments.length} completed appointments that need feedback requests`);
+        return appointments;
+    } catch (error) {
+        console.error("Error fetching completed appointments:", error);
+        return [];
+    }
+}
+
+async function updateFeedbackSentStatus(appointmentId) {
+    try {
+        const query = `
+            UPDATE appointments
+            SET feedback_sent = 1,
+                feedback_sent_date = NOW()
+            WHERE Appointment_ID = ?
+        `;
+
+        const [result] = await pool.promise().execute(query, [appointmentId]);
+
+        if (result.affectedRows > 0) {
+            console.log(`Updated feedback_sent status for appointment ${appointmentId}`);
+            return true;
+        } else {
+            console.error(`No appointment found with ID ${appointmentId}`);
+            return false;
+        }
+    } catch (error) {
+        console.error(`Error updating feedback_sent status for appointment ${appointmentId}:`, error);
+        return false;
+    }
+}
+
+
+
 module.exports = {
+    fetchCompletedAppointments,
+    updateFeedbackSentStatus,
+    getTransactionIdByAppointmentId,
+    updateAppointmentIdByTransactionId,
     fetchUpcomingAppointments,
     getClientDetails,
     getPocDetails,
@@ -850,4 +1007,6 @@ module.exports = {
     getAppointmentJsonDataByKey,
     getAppointmentJsonData,
     updateAppointmentJsonData,
+    formatDisplayDate,
+    parseDisplayDate
 };
